@@ -16,6 +16,7 @@
   --purple: #7e66ff;
   --blue: #69c8ff;
   --dark: #161a24;
+  --hero-bottom-inset: 56px;
 }
 
 *,
@@ -232,11 +233,11 @@ textarea {
   grid-template-columns: 1.05fr 1.45fr;
   gap: 16px;
   align-items: center;
+  padding-inline: var(--hero-bottom-inset);
 }
 
 .hero-bottom__left {
   padding-top: 10px;
-  padding-left: 22px;
 }
 
 .hero-bottom__left .h1 {
