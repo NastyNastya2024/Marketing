@@ -33,7 +33,7 @@
         </div>
 
         <div class="hero-block__bottom">
-          <div class="container hero-block__inner">
+          <div class="hero-block__inner hero-block__inner--full">
             <div class="hero-bottom">
               <div class="hero-bottom__left">
                 <h1 class="h1">Продажи<br />с&nbsp;помощью&nbsp;AI</h1>
@@ -82,55 +82,39 @@
     <main>
       <section class="section section--tight" id="what">
         <div class="container">
-          <div class="section__head">
+          <div class="section__head section__head--row">
             <h2 class="h2">What we do</h2>
+            <div class="section-actions">
+              <a class="pill pill--light" href="#cases">Explore more</a>
+              <a class="icon-pill icon-pill--light" href="#cases" aria-label="Open">
+                <span aria-hidden="true">›</span>
+              </a>
+            </div>
           </div>
 
-          <div class="what">
+          <div class="what what--showcase">
             <div class="what__text">
-              <p class="muted">
-                We help teams move faster with research, strategy and production-ready design
-                systems. Everything is built to scale and stays readable on any device.
+              <h3 class="what__kicker">AI Solutions and Services</h3>
+              <p class="what__desc">
+                We develop custom AI solutions tailored to your specific needs and challenges.
+                From machine learning algorithms to natural language processing systems, we
+                deliver cutting-edge AI technologies that enhance efficiency, productivity, and
+                decision-making across industries.
               </p>
-              <div class="what__list">
-                <div class="check">
-                  <span class="check__dot" aria-hidden="true"></span>
-                  <div>
-                    <div class="check__title">Brand & identity</div>
-                    <div class="check__desc">Visual language, tone, components</div>
-                  </div>
-                </div>
-                <div class="check">
-                  <span class="check__dot" aria-hidden="true"></span>
-                  <div>
-                    <div class="check__title">Web & product design</div>
-                    <div class="check__desc">Layouts, grids, UI kits, prototypes</div>
-                  </div>
-                </div>
-                <div class="check">
-                  <span class="check__dot" aria-hidden="true"></span>
-                  <div>
-                    <div class="check__title">Analytics & growth</div>
-                    <div class="check__desc">Metrics, experiments, iteration</div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            <div class="what__cards">
-              <article class="frame-card">
-                <img class="frame-card__img" src="./pic/BlockImage1.png" alt="Project cover" />
-                <div class="frame-card__body">
-                  <div class="frame-card__title">A model art for our company</div>
-                  <div class="frame-card__meta">Showcase & concept</div>
-                </div>
+            <div class="what__showcase" aria-label="Showcase">
+              <article class="show-card show-card--left">
+                <img class="show-card__img" src="./pic/BlockImage2.png" alt="AI solutions" loading="lazy" />
+                <div class="show-card__title">AI solutions<br />for our company</div>
               </article>
-              <article class="frame-card frame-card--offset">
-                <img class="frame-card__img" src="./pic/BlockImage2.png" alt="Project cover" />
-                <div class="frame-card__body">
-                  <div class="frame-card__title">Creative for marketing</div>
-                  <div class="frame-card__meta">Landing visuals</div>
-                </div>
+
+              <article class="show-card show-card--right">
+                <img class="show-card__img" src="./pic/BlockImage4.png" alt="Consulting" loading="lazy" />
+                <div class="show-card__title">Consulting<br />and strategy</div>
+                <button class="show-card__nav show-card__nav--right" type="button" aria-label="Next">
+                  ›
+                </button>
               </article>
             </div>
           </div>
@@ -141,34 +125,48 @@
         <div class="container">
           <div class="section__head section__head--row">
             <h2 class="h2">Case studies</h2>
-            <div class="arrows" aria-label="Slider controls">
-              <button class="arrow" type="button" aria-label="Previous">‹</button>
-              <button class="arrow" type="button" aria-label="Next">›</button>
-            </div>
           </div>
 
           <div class="cases">
-            <article class="case case--img">
-              <img src="./pic/Pic4.png" alt="Case study visual" />
+            <article class="case case--img case--lilac">
+              <img
+                src="./pic/Frame%2072%20(1).png"
+                alt="Case study visual"
+                loading="lazy"
+              />
             </article>
-            <article class="case case--dark">
-              <div class="case__kpi">$73.2 hi</div>
-              <div class="case__title">Data-driven strategy</div>
+
+            <article class="case case--kpi case--kpi-light">
+              <div class="case__kpi">$733.7 bil</div>
               <p class="case__desc">
-                KPI dashboards, experiments and iterative improvements across channels.
+                The global artificial intelligence market size is projected to reach
               </p>
-              <a class="case__link" href="#contact">Read more</a>
+              <div class="case__footer">
+                <div class="case__bars" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+                <div class="case__cta">
+                  <span class="case__cta-text">Explore more</span>
+                  <span class="case__circle" aria-hidden="true">›</span>
+                </div>
+              </div>
             </article>
-            <article class="case case--dark case--wide">
-              <div class="case__kpi">$15.7 млрд</div>
-              <div class="case__title">Platform marketing</div>
+
+            <article class="case case--dark case--kpi">
+              <div class="case__kpi">$15.7 tril</div>
               <p class="case__desc">
-                Positioning, content system and a scalable landing architecture.
+                AI could contribute up to $15.7 trillion to the global economy by 2030, increasing
+                global GDP by 14%
               </p>
-              <a class="case__link" href="#contact">Read more</a>
+              <div class="case__footer">
+                <div class="case__bars" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+              </div>
             </article>
-            <article class="case case--img">
-              <img src="./pic/Pic2.png" alt="Case study visual" />
+
+            <article class="case case--img case--pink">
+              <img src="./pic/Picture1.png" alt="Case study visual" loading="lazy" />
             </article>
           </div>
         </div>
@@ -182,8 +180,30 @@
           </div>
 
           <div class="testimonial">
-            <div class="testimonial__photo">
-              <img src="./pic/Pic1.png" alt="Client photo" />
+            <div class="testimonial__photo" data-testimonial>
+              <button
+                class="t-arrow t-arrow--left"
+                type="button"
+                aria-label="Previous image"
+                data-testimonial-prev
+              >
+                ‹
+              </button>
+              <img
+                class="testimonial__img"
+                src="./pic/Pic1.png"
+                alt="Client photo"
+                loading="lazy"
+                data-testimonial-img
+              />
+              <button
+                class="t-arrow t-arrow--right"
+                type="button"
+                aria-label="Next image"
+                data-testimonial-next
+              >
+                ›
+              </button>
             </div>
             <div class="testimonial__card">
               <div class="quote">
@@ -250,109 +270,76 @@
         </div>
       </section>
 
-      <section class="cta" aria-label="Call to action">
-        <div class="container">
-          <div class="cta__inner">
-            <div class="cta__copy">
-              <div class="cta__title">Discover our expertise through successful case studies</div>
-              <div class="cta__desc">
-                A responsive grid that keeps the same rhythm on any screen.
-              </div>
-            </div>
-            <a class="pill pill--dark" href="#contact">Get started</a>
-          </div>
-        </div>
-      </section>
-
       <section class="section section--light" id="contact">
         <div class="container">
-          <div class="section__head section__head--center">
-            <div class="eyebrow">HAVE GREAT IDEA?</div>
-            <h2 class="h2">Tell us about it</h2>
+          <div class="footer-card footer-card--embedded">
+            <div class="footer-card__top" aria-hidden="true"></div>
+
+            <div class="footer-card__bottom footer-card__bottom--contact">
+              <form class="footer-form" action="#" method="post">
+                <div class="form__grid">
+                  <label class="field">
+                    <span class="field__label">Name</span>
+                    <input class="field__input" name="name" type="text" placeholder="Your name" />
+                  </label>
+                  <label class="field">
+                    <span class="field__label">Email</span>
+                    <input
+                      class="field__input"
+                      name="email"
+                      type="email"
+                      placeholder="you@company.com"
+                    />
+                  </label>
+                  <label class="field">
+                    <span class="field__label">Budget</span>
+                    <input class="field__input" name="budget" type="text" placeholder="$5k–$15k" />
+                  </label>
+                  <label class="field">
+                    <span class="field__label">Company</span>
+                    <input class="field__input" name="company" type="text" placeholder="Company" />
+                  </label>
+                  <label class="field field--full">
+                    <span class="field__label">Message</span>
+                    <textarea
+                      class="field__input field__textarea"
+                      name="message"
+                      rows="5"
+                      placeholder="Tell us what you want to build"
+                    ></textarea>
+                  </label>
+                </div>
+
+                <div class="form__actions">
+                  <button class="pill pill--dark" type="submit">Send message</button>
+                  <span class="form__hint muted">We’ll reply within 1–2 business days.</span>
+                </div>
+              </form>
+
+              <div class="footer-card__content">
+                <div class="footer-card__left">
+                  <div class="footer-card__title">Thanks<br />for watching !</div>
+                  <div class="footer-card__contacts">
+                    <a class="footer-contact" href="mailto:anastkomarova@yandex.ru">
+                      <span class="footer-contact__icon" aria-hidden="true">@</span>
+                      <span>anastkomarova@yandex.ru</span>
+                    </a>
+                    <a class="footer-contact" href="#">
+                      <span class="footer-contact__icon" aria-hidden="true">⌁</span>
+                      <span>@anastasia_komarova1</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="footer-card__avatar" aria-label="Avatar">
+                <img src="./pic/Picture1.png" alt="" loading="lazy" />
+              </div>
+            </div>
           </div>
-
-          <form class="form" action="#" method="post">
-            <div class="form__grid">
-              <label class="field">
-                <span class="field__label">Name</span>
-                <input class="field__input" name="name" type="text" placeholder="Your name" />
-              </label>
-              <label class="field">
-                <span class="field__label">Email</span>
-                <input
-                  class="field__input"
-                  name="email"
-                  type="email"
-                  placeholder="you@company.com"
-                />
-              </label>
-              <label class="field">
-                <span class="field__label">Budget</span>
-                <input class="field__input" name="budget" type="text" placeholder="$5k–$15k" />
-              </label>
-              <label class="field">
-                <span class="field__label">Company</span>
-                <input class="field__input" name="company" type="text" placeholder="Company" />
-              </label>
-              <label class="field field--full">
-                <span class="field__label">Message</span>
-                <textarea
-                  class="field__input field__textarea"
-                  name="message"
-                  rows="5"
-                  placeholder="Tell us what you want to build"
-                ></textarea>
-              </label>
-            </div>
-
-            <div class="form__actions">
-              <button class="pill pill--dark" type="submit">Send message</button>
-              <span class="form__hint muted">We’ll reply within 1–2 business days.</span>
-            </div>
-          </form>
         </div>
       </section>
     </main>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer__grid">
-          <div class="footer__brand">
-            <div class="brand brand--footer">
-              <span></span>
-            </div>
-            <p class="muted">
-              A demo responsive page built close to the provided reference layout.
-            </p>
-          </div>
-
-          <div class="footer__cols">
-            <div class="footer__col">
-              <div class="footer__title">Explore</div>
-              <a href="#what">Services</a>
-              <a href="#cases">Case studies</a>
-              <a href="#faq">FAQ</a>
-            </div>
-            <div class="footer__col">
-              <div class="footer__title">Social</div>
-              <a href="#">Twitter</a>
-              <a href="#">Behance</a>
-              <a href="#">Dribbble</a>
-            </div>
-            <div class="footer__col">
-              <div class="footer__title">Contact</div>
-              <a href="mailto:hello@example.com">hello@example.com</a>
-              <a href="tel:+10000000000">+1 (000) 000-0000</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer__bottom">
-          <span class="muted">© 2026 MArketing</span>
-          <span class="muted">All rights reserved</span>
-        </div>
-      </div>
-    </footer>
 
     <div class="mobile-menu" hidden data-menu>
       <div class="mobile-menu__sheet" role="dialog" aria-modal="true" aria-label="Menu">

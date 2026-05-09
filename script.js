@@ -44,6 +44,39 @@ function setupMobileMenu() {
   });
 }
 
+function setupTestimonialSlider() {
+  const root = document.querySelector("[data-testimonial]");
+  const img = document.querySelector("[data-testimonial-img]");
+  const prev = document.querySelector("[data-testimonial-prev]");
+  const next = document.querySelector("[data-testimonial-next]");
+
+  if (!root || !(img instanceof HTMLImageElement) || !prev || !next) return;
+
+  const images = [
+    "./pic/Pic1.png",
+    "./pic/Pic2.png",
+    "./pic/Pic3.png",
+    "./pic/Pic4.png",
+    "./pic/Pic5.png",
+    "./pic/Pic6.png",
+  ];
+
+  let idx = Math.max(0, images.indexOf(img.getAttribute("src") ?? ""));
+  const set = (n) => {
+    idx = (n + images.length) % images.length;
+    img.src = images[idx];
+  };
+
+  prev.addEventListener("click", () => set(idx - 1));
+  next.addEventListener("click", () => set(idx + 1));
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") set(idx - 1);
+    if (e.key === "ArrowRight") set(idx + 1);
+  });
+}
+
 setupFaq();
 setupMobileMenu();
+setupTestimonialSlider();
 
