@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=2026-05-10-1359" />
   </head>
   <body>
     <header class="hero">
@@ -137,43 +137,45 @@
           </div>
 
           <div class="cases">
-            <article class="case case--img case--lilac">
-              <img
-                src="./pic/Frame%2072%20(1).png"
-                alt="Визуал кейса"
-                loading="lazy"
-              />
-            </article>
-
-            <article class="case case--kpi case--kpi-light">
-              <div class="case__kpi">733,7 млрд $</div>
-              <p class="case__desc">
-                Прогнозируемый объём мирового рынка искусственного интеллекта
-              </p>
-              <div class="case__footer">
-                <div class="case__bars" aria-hidden="true">
-                  <span></span><span></span><span></span><span></span>
-                </div>
-                <div class="case__cta">
-                  <span class="case__cta-text">Узнать больше</span>
-                  <span class="case__circle" aria-hidden="true">›</span>
+            <article class="case case--split case--kpi-light">
+              <div class="case__media" aria-hidden="true">
+                <img
+                  src="./pic/Frame%2072%20(1).png"
+                  alt=""
+                  loading="lazy"
+                />
+              </div>
+              <div class="case__body">
+                <div class="case__kpi">733,7 млрд $</div>
+                <p class="case__desc">
+                  Прогнозируемый объём мирового рынка искусственного интеллекта
+                </p>
+                <div class="case__footer">
+                  <div class="case__bars" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                  <div class="case__cta">
+                    <span class="case__cta-text">Узнать больше</span>
+                    <span class="case__circle" aria-hidden="true">›</span>
+                  </div>
                 </div>
               </div>
             </article>
 
-            <article class="case case--img case--pink">
-              <img src="./pic/Picture1.png" alt="Визуал кейса" loading="lazy" />
-            </article>
-
-            <article class="case case--kpi case--kpi-light">
-              <div class="case__kpi">15,7 трлн $</div>
-              <p class="case__desc">
-                К&nbsp;2030 году AI может добавить до $15,7 трлн мировой экономике, увеличив
-                мировой ВВП примерно на 14&nbsp;%.
-              </p>
-              <div class="case__footer">
-                <div class="case__bars" aria-hidden="true">
-                  <span></span><span></span><span></span><span></span>
+            <article class="case case--split case--split--reverse case--kpi-light">
+              <div class="case__media" aria-hidden="true">
+                <img src="./pic/Picture1.png" alt="" loading="lazy" />
+              </div>
+              <div class="case__body">
+                <div class="case__kpi">15,7 трлн $</div>
+                <p class="case__desc">
+                  К&nbsp;2030 году AI может добавить до $15,7 трлн мировой экономике, увеличив
+                  мировой ВВП примерно на 14&nbsp;%.
+                </p>
+                <div class="case__footer">
+                  <div class="case__bars" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                  </div>
                 </div>
               </div>
             </article>
@@ -204,24 +206,25 @@
                 loading="lazy"
                 data-testimonial-img
               />
-              <div class="testimonial__nav" role="group" aria-label="Переключение фото">
-                <button
-                  class="t-arrow t-arrow--left"
-                  type="button"
-                  aria-label="Предыдущее фото"
-                  data-testimonial-prev
-                >
-                  ‹
-                </button>
-                <button
-                  class="t-arrow t-arrow--right"
-                  type="button"
-                  aria-label="Следующее фото"
-                  data-testimonial-next
-                >
-                  ›
-                </button>
-              </div>
+            </div>
+
+            <div class="testimonial__nav" role="group" aria-label="Переключение фото">
+              <button
+                class="t-arrow t-arrow--left"
+                type="button"
+                aria-label="Предыдущее фото"
+                data-testimonial-prev
+              >
+                ‹
+              </button>
+              <button
+                class="t-arrow t-arrow--right"
+                type="button"
+                aria-label="Следующее фото"
+                data-testimonial-next
+              >
+                ›
+              </button>
             </div>
 
             <div class="testimonial__side testimonial__side--right">
