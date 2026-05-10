@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Обратное тестирование — Маркетинг</title>
+    <title>Отладка и тестирование ИИ-инструментов — Маркетинг</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles.css?v=2026-05-11-1605" />
-    <link rel="stylesheet" href="./article.css?v=2026-05-11-2035" />
+    <link rel="stylesheet" href="./article.css?v=2026-05-11-2042" />
   </head>
   <body class="article-body page-secondary" style="--hero-bg-img: url('../pic/header/martin-martz-0rZdaEtmKnU-unsplash.jpg');">
     <header class="hero">
@@ -37,7 +37,7 @@
           <div class="hero-block__inner hero-block__inner--full">
             <div class="hero-bottom">
               <div class="hero-bottom__left">
-                <h1 class="h1">Обратное тестирование</h1>
+                <h1 class="h1">Отладка и тестирование ИИ</h1>
                 <div class="hero-bottom__actions">
                   <a class="pill pill--light" href="../cases.html">Узнать больше</a>
                   <a class="icon-pill" href="../cases.html" aria-label="Открыть">
@@ -48,17 +48,17 @@
 
               <div class="hero-bottom__right">
                 <article class="stat-card stat-card--dark">
-                  <div class="stat-card__kpi">+130K</div>
+                  <div class="stat-card__kpi">50%</div>
                   <div class="stat-card__meta">
-                    Методики внутренней работы и коучинговые пакеты для снижения стресса.
+                    Примерно половина успеха — после релиза: отладка, регрессия, контроль обновлений и границ ошибок модели.
                   </div>
-                  <a class="stat-card__link" href="../cases.html">Узнать больше</a>
+                  <a class="stat-card__link" href="./usluga-vnedrenie.html">Внедрение →</a>
                 </article>
 
                 <article class="stat-card stat-card--light">
-                  <div class="stat-card__kpi">34%</div>
+                  <div class="stat-card__kpi">3 мес.</div>
                   <div class="stat-card__meta">
-                    Методики внутренней работы и коучинговые пакеты для снижения стресса.
+                    Без процесса — типичная «выгорание»: инструмент «как-то» работает, ошибки обходят, пользы не помнят.
                   </div>
                   <div class="stat-card__icons" aria-label="Действия">
                     <span class="dot-icon" aria-hidden="true"></span>
@@ -81,12 +81,341 @@
     </header>
     <main class="article-main">
       <article class="article-sheet">
-        <h1>Обратное тестирование</h1>
-        <p class="article-lead">Подходит для смоделированных CJM после запуска и для уже работающих скриптов продаж.</p>
-<div class="article-prose">
-          <section class="mosaic-grid" aria-label="Статья по сегментам">
+        <h1>Отладка и тестирование ИИ-инструментов: как убедиться, что они работают, и не сломать то, что уже работает</h1>
+        <p class="article-lead">
+          После <a href="./usluga-vnedrenie.html">внедрения</a> без системной проверки и отладки энтузиазм быстро гаснет — здесь карта точек отказа по инструментам и методы hold-out, A/B, юниты, регрессия и UAT.
+        </p>
+        <div class="article-prose">
+          <section class="mosaic-grid" aria-label="Статья: отладка и тестирование ИИ">
             <article class="mosaic-card">
-              <p>Содержимое этой страницы можно расширить: сценарии тестирования, примеры CJM, критерии успеха и формат отчёта.</p>
+              <h2>Введение: почему «внедрили и забыли» не работает</h2>
+              <p>Типичный сценарий после запуска:</p>
+              <ul>
+                <li><strong>Недели 1–2:</strong> всё горит, ловят ошибки, правят.</li>
+                <li><strong>Недели 3–4:</strong> ошибки кажутся мелочью, перестают фиксировать.</li>
+                <li><strong>Месяц 2:</strong> «как‑то работает», менеджеры обходят или игнорируют сбои.</li>
+                <li><strong>Месяц 3:</strong> не помнят цель внедрения; система включена и не приносит пользы, деньги списаны.</li>
+              </ul>
+              <p>Это следствие отсутствия системной отладки и тестирования.</p>
+              <p class="mosaic-card__pull">
+                Проектирование и внедрение ≈ половина успеха. Остальное — постоянная отладка, тесты обновлений, поиск границ ошибок модели и исправления.
+              </p>
+              <p>Статья — про эту вторую половину.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 1. Отладка ≠ тестирование</h2>
+              <table aria-label="Отладка и тестирование: различие">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Отладка (Debugging)</th>
+                    <th scope="col">Тестирование (Testing)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Что это</strong></td>
+                    <td>Поиск и исправление ошибок в уже работающей системе</td>
+                    <td>Проверка на соответствие требованиям до и после изменений</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Когда</strong></td>
+                    <td>Постоянно, когда видим ошибку</td>
+                    <td>Перед релизом (версия, правило, ключ) и после изменений в бизнесе</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Кто</strong></td>
+                    <td>Владелец инструмента + технический специалист</td>
+                    <td>Аналитик + владелец + выборочно пользователи</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Что ищем</strong></td>
+                    <td>«Почему сделано не то?»</td>
+                    <td>«Соответствует ли поведение ожиданиям?»</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Результат</strong></td>
+                    <td>Исправление, обновление правил</td>
+                    <td>Отчёт о качестве, решение «выпускать / нет»</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p><strong>Тестирование:</strong> работает ли инструмент правильно в принципе?</p>
+              <p><strong>Отладка:</strong> где именно сломался и как починить?</p>
+              <p>Нужны оба: без тестов не узнаете о поломке; без отладки не почините.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 2. Social Scout</h2>
+              <table aria-label="Тестирование и отладка Social Scout">
+                <thead>
+                  <tr>
+                    <th scope="col">Что тестируем</th>
+                    <th scope="col">Как отлаживаем</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Ключевые слова — находит ли нужное</td>
+                    <td>Добавление/удаление слов, проверка на тестовых запросах</td>
+                  </tr>
+                  <tr>
+                    <td>Тональность позитив/негатив/нейтрал</td>
+                    <td>На выборке ~50 сообщений сверка с оценкой человека</td>
+                  </tr>
+                  <tr>
+                    <td>Скоринг «горячий / тёплый / холодный»</td>
+                    <td>Сравнение score с реакцией менеджера после обработки</td>
+                  </tr>
+                  <tr>
+                    <td>Дубликаты карточек лида</td>
+                    <td>Логи созданий, поиск повторов по ссылке/тексту</td>
+                  </tr>
+                  <tr>
+                    <td>Пропуски важных упоминаний</td>
+                    <td>Вручную выборки из соцсетей vs то, что нашёл скаут</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 2. Intent Routing</h2>
+              <table aria-label="Тестирование и отладка Intent Routing">
+                <thead>
+                  <tr>
+                    <th scope="col">Что тестируем</th>
+                    <th scope="col">Как отлаживаем</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Точность определения интента</td>
+                    <td>Системный интент vs разметка человека</td>
+                  </tr>
+                  <tr>
+                    <td>Время маршрутизации</td>
+                    <td>Замер latency: сообщение → назначение сотрудника</td>
+                  </tr>
+                  <tr>
+                    <td>Корректность маршрутизации</td>
+                    <td>«Покупка» — в продажи, не в поддержку и т.д.</td>
+                  </tr>
+                  <tr>
+                    <td>Неоднозначные сообщения</td>
+                    <td>Граничные кейсы («Сколько стоит?» — покупка или цена)</td>
+                  </tr>
+                  <tr>
+                    <td>Эскалация при низкой уверенности</td>
+                    <td>При уверенности &lt; 70% нет полностью автоматической маршрутизации</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 2. AI‑агент (ответы)</h2>
+              <table aria-label="Тестирование и отладка AI-агента">
+                <thead>
+                  <tr>
+                    <th scope="col">Что тестируем</th>
+                    <th scope="col">Как отлаживаем</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Правильность ответов</td>
+                    <td>Сверка с эталоном менеджера</td>
+                  </tr>
+                  <tr>
+                    <td>Тональность</td>
+                    <td>Тестовые диалоги и обратная связь клиентов</td>
+                  </tr>
+                  <tr>
+                    <td>«Галлюцинации», выдуманные факты</td>
+                    <td>Поиск в логах ответов вне базы знаний</td>
+                  </tr>
+                  <tr>
+                    <td>Передача человеку при низкой уверенности</td>
+                    <td>Проверка порога уверенности</td>
+                  </tr>
+                  <tr>
+                    <td>Повторяемость / зацикливание</td>
+                    <td>Десять формулировок одного вопроса — ответ не должен залипать</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 2. Симулятор мнений</h2>
+              <table aria-label="Тестирование и отладка симулятора мнений">
+                <thead>
+                  <tr>
+                    <th scope="col">Что тестируем</th>
+                    <th scope="col">Как отлаживаем</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Точность прогноза реакции</td>
+                    <td>Предсказание vs реальность на отложенной выборке</td>
+                  </tr>
+                  <tr>
+                    <td>Качество текста</td>
+                    <td>Релевантность, грамматика, уместность, не шаблон</td>
+                  </tr>
+                  <tr>
+                    <td>Переобучение (overfitting)</td>
+                    <td>Качество на новых данных не хуже, чем на обучении</td>
+                  </tr>
+                  <tr>
+                    <td>Скорость генерации</td>
+                    <td>Время от запроса до готового текста</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 2. Case Factory</h2>
+              <table aria-label="Тестирование и отладка Case Factory">
+                <thead>
+                  <tr>
+                    <th scope="col">Что тестируем</th>
+                    <th scope="col">Как отлаживаем</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Структура кейса («было / стало / цифры / цитата»)</td>
+                    <td>Автопроверка структуры + выборочная ручная</td>
+                  </tr>
+                  <tr>
+                    <td>Достоверность цифр</td>
+                    <td>Сверка с CRM</td>
+                  </tr>
+                  <tr>
+                    <td>Уникальность</td>
+                    <td>Поиск дубликатов по тексту и по сделке</td>
+                  </tr>
+                  <tr>
+                    <td>Релевантность отрасли</td>
+                    <td>Сверка с полем «отрасль» в CRM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 3. Метод 1. Hold-out (отложенная выборка)</h2>
+              <p>
+                <strong>Зачем:</strong> понять качество на невиданных данных — для симулятора, прогноза покупки, Intent Routing.
+              </p>
+              <ol>
+                <li>Исторические данные (например, 1000 диалогов с разметкой интента).</li>
+                <li>Разделить: ~80% обучение, ~20% тест — тест до обучения не трогаем.</li>
+                <li>Обучение на 80%.</li>
+                <li>Прогон на 20% с известной правильной разметкой.</li>
+                <li>Сравнить предсказания с истиной: точность, полнота, F1.</li>
+              </ol>
+              <p class="mosaic-card__pull">
+                Пример: 800 сообщений для обучения, 200 — тест; 185 верных интента из 200 → точность 92,5%.
+              </p>
+              <p><strong>Важно:</strong> тестовая часть не участвует в обучении, иначе измерите запоминание, а не обобщение.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 3. Метод 2. A/B на живых данных</h2>
+              <p><strong>Зачем:</strong> сравнить новую версию (ключи Scout, модель симулятора) со старой.</p>
+              <ol>
+                <li>Случайно делите трафик/лидов/упоминания: ~50% контроль (старая версия), ~50% эксперимент.</li>
+                <li>Срок измерений (например, 2 недели).</li>
+                <li>Сравниваете KPI: объём упоминаний, конверсия, точность маршрутизации и т.д.</li>
+                <li>Если новая статистически лучше — раскат на 100%.</li>
+              </ol>
+              <p>
+                Пример Scout: было 50 упоминаний/нед и точность 70%; добавили ключи — 80 упоминаний и 75% точности → переключаем всех на новый набор.
+              </p>
+              <p>
+                <strong>Оговорка:</strong> нужен достаточный объём (ориентир 100–200 событий на группу). Если 5 упоминаний в месяц — A/B бессмысленен.
+              </p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 3. Метод 3. Юнит-тесты правил и ключей</h2>
+              <p><strong>Зачем:</strong> быстро проверить одно правило или ключевое слово.</p>
+              <ol>
+                <li>Набор кейсов «вход → ожидаемый выход».</li>
+                <li>Запуск (вручную или скриптом).</li>
+                <li>Сравнение с ожиданием; расхождение — правка правила/ключа.</li>
+              </ol>
+              <table aria-label="Пример юнит-кейсов Intent Routing">
+                <thead>
+                  <tr>
+                    <th scope="col">Вход</th>
+                    <th scope="col">Ожидаемый интент</th>
+                    <th scope="col">Факт</th>
+                    <th scope="col">Вердикт</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>«Хочу купить CRM»</td>
+                    <td>purchase</td>
+                    <td>purchase</td>
+                    <td>Ок</td>
+                  </tr>
+                  <tr>
+                    <td>«У меня сломалась интеграция»</td>
+                    <td>tech_support</td>
+                    <td>tech_support</td>
+                    <td>Ок</td>
+                  </tr>
+                  <tr>
+                    <td>«Сколько стоит?»</td>
+                    <td>price_inquiry</td>
+                    <td>purchase</td>
+                    <td>Ошибка — усилить правило для короткого запроса о цене</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>В набор включайте: типовые, граничные («Сколько?», «Дорого», пустое сообщение), с опечатками и сленгом, негативные формулировки.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 3. Метод 4. Регрессионное тестирование</h2>
+              <p><strong>Зачем:</strong> новое изменение не должно ломать старое работающее поведение.</p>
+              <ol>
+                <li>Сохранить «эталонный прогон» набора кейсов до правок.</li>
+                <li>Внести изменение.</li>
+                <li>Прогнать тот же набор на новой версии.</li>
+                <li>Если падение по ранее зелёным кейсам — исправление или откат.</li>
+              </ol>
+              <p class="mosaic-card__pull">
+                Пример AI‑агента: добавили ответ про рассрочку → на старых 50 вопросах один начал про рассрочку там, где нужна поддержка 24/7 — регрессия, откат или перепись правила.
+              </p>
+              <p>
+                В идеале прогоны автоматические в CI/CD; минимально — ручной прогон владельцем набора за 5–10 минут после каждого изменения.
+              </p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 3. Метод 5. UAT</h2>
+              <p>
+                <strong>Зачем:</strong> убедиться, что инструмент удобен менеджерам и не вызывает отторжения перед полным «боем».
+              </p>
+              <ol>
+                <li>2–3 менеджера (не самые консервативные и не только «гики»).</li>
+                <li>Доступ к новой версии на 3–5 дней или на 20–30 реальных кейсов.</li>
+                <li>После кейса — короткая форма: помог / не помог / нейтрально; что неудобно; какая ошибка.</li>
+                <li>Исправление критичного, повторный круг.</li>
+              </ol>
+              <p>
+                Пример симулятора: три варианта ответа — третий постоянно длинный и мимо (баг); мелкая кнопка выбора (UI); запрос «один лучший + кнопка альтернативы». После правок — повторный UAT.
+              </p>
+              <p><strong>Порог выпуска:</strong> нет блокирующих ошибок; все тестовые менеджеры: «лучше, чем раньше» или «не хуже».</p>
             </article>
           </section>
         </div>
@@ -123,77 +452,76 @@
       </section>
     </main>
 
-      <section class="section section--light" id="contact">
-        <div class="container">
-          <div class="footer-card footer-card--embedded">
-            <div class="footer-card__top" aria-hidden="true"></div>
+    <section class="section section--light" id="contact">
+      <div class="container">
+        <div class="footer-card footer-card--embedded">
+          <div class="footer-card__top" aria-hidden="true"></div>
 
-            <div class="footer-card__bottom footer-card__bottom--contact">
-              <form class="footer-form" action="#" method="post">
-                <div class="form__grid">
-                  <label class="field">
-                    <span class="field__label">Имя</span>
-                    <input class="field__input" name="name" type="text" placeholder="Ваше имя" />
-                  </label>
-                  <label class="field">
-                    <span class="field__label">Email</span>
-                    <input
-                      class="field__input"
-                      name="email"
-                      type="email"
-                      placeholder="you@company.com"
-                    />
-                  </label>
-                  <label class="field">
-                    <span class="field__label">Бюджет</span>
-                    <input class="field__input" name="budget" type="text" placeholder="от $5k до $15k" />
-                  </label>
-                  <label class="field">
-                    <span class="field__label">Компания</span>
-                    <input class="field__input" name="company" type="text" placeholder="Название компании" />
-                  </label>
-                  <label class="field field--full">
-                    <span class="field__label">Сообщение</span>
-                    <textarea
-                      class="field__input field__textarea"
-                      name="message"
-                      rows="5"
-                      placeholder="Расскажите, что хотите сделать"
-                    ></textarea>
-                  </label>
-                </div>
-
-                <div class="form__actions">
-                  <button class="pill pill--dark" type="submit">Отправить сообщение</button>
-                  <span class="form__hint muted">Ответим в течение 1–2 рабочих дней.</span>
-                </div>
-              </form>
-
-              <div class="footer-card__content">
-                <div class="footer-card__left">
-                  <div class="footer-card__title">Спасибо<br />за просмотр!</div>
-                  <div class="footer-card__contacts">
-                    <a class="footer-contact" href="mailto:anastkomarova@yandex.ru">
-                      <span class="footer-contact__icon" aria-hidden="true">@</span>
-                      <span>anastkomarova@yandex.ru</span>
-                    </a>
-                    <a class="footer-contact" href="#">
-                      <span class="footer-contact__icon" aria-hidden="true">⌁</span>
-                      <span>@anastasia_komarova1</span>
-                    </a>
-                  </div>
-                </div>
+          <div class="footer-card__bottom footer-card__bottom--contact">
+            <form class="footer-form" action="#" method="post">
+              <div class="form__grid">
+                <label class="field">
+                  <span class="field__label">Имя</span>
+                  <input class="field__input" name="name" type="text" placeholder="Ваше имя" />
+                </label>
+                <label class="field">
+                  <span class="field__label">Email</span>
+                  <input
+                    class="field__input"
+                    name="email"
+                    type="email"
+                    placeholder="you@company.com"
+                  />
+                </label>
+                <label class="field">
+                  <span class="field__label">Бюджет</span>
+                  <input class="field__input" name="budget" type="text" placeholder="от $5k до $15k" />
+                </label>
+                <label class="field">
+                  <span class="field__label">Компания</span>
+                  <input class="field__input" name="company" type="text" placeholder="Название компании" />
+                </label>
+                <label class="field field--full">
+                  <span class="field__label">Сообщение</span>
+                  <textarea
+                    class="field__input field__textarea"
+                    name="message"
+                    rows="5"
+                    placeholder="Расскажите, что хотите сделать"
+                  ></textarea>
+                </label>
               </div>
 
-              <div class="footer-card__avatar" aria-label="Аватар">
-                <img src="../pic/Picture6.png" alt="" loading="lazy" />
+              <div class="form__actions">
+                <button class="pill pill--dark" type="submit">Отправить сообщение</button>
+                <span class="form__hint muted">Ответим в течение 1–2 рабочих дней.</span>
               </div>
+            </form>
+
+            <div class="footer-card__content">
+              <div class="footer-card__left">
+                <div class="footer-card__title">Спасибо<br />за просмотр!</div>
+                <div class="footer-card__contacts">
+                  <a class="footer-contact" href="mailto:anastkomarova@yandex.ru">
+                    <span class="footer-contact__icon" aria-hidden="true">@</span>
+                    <span>anastkomarova@yandex.ru</span>
+                  </a>
+                  <a class="footer-contact" href="#">
+                    <span class="footer-contact__icon" aria-hidden="true">⌁</span>
+                    <span>@anastasia_komarova1</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer-card__avatar" aria-label="Аватар">
+              <img src="../pic/Picture6.png" alt="" loading="lazy" />
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-  
     <div class="mobile-menu" hidden data-menu aria-hidden="true">
       <div class="mobile-menu__row">
         <button class="mobile-menu__backdrop" type="button" aria-label="Закрыть меню"></button>
