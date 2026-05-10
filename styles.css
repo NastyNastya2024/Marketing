@@ -852,6 +852,10 @@ textarea {
   height: 100%;
 }
 
+.case.case--split {
+  overflow: visible;
+}
+
 .case--img {
   background: #fff;
   border: 0;
@@ -890,29 +894,35 @@ textarea {
 .case__media {
   height: 100%;
   background: transparent;
-  display: grid;
+  display: flex;
   align-items: center;
-  justify-items: start;
-  overflow: hidden;
+  justify-content: flex-start;
+  overflow: visible;
   padding: 0;
+  position: relative;
+  z-index: 1;
+  min-height: 280px;
 }
 
 .case--split--reverse .case__media {
-  justify-items: end;
+  justify-content: flex-end;
   padding: 0;
 }
 
 .case__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  max-height: none;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 0;
+  object-fit: contain;
   border-radius: 22px;
   background: #fff;
 }
 
 .case--split--reverse .case__media img {
-  justify-self: end;
+  margin-inline: 0 0 auto 0;
 }
 
 .case__body {
