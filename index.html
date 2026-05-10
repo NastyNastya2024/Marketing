@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=2026-05-10-1505" />
+    <link rel="stylesheet" href="./styles.css?v=2026-05-11-1605" />
   </head>
   <body>
     <header class="hero">
@@ -38,8 +38,8 @@
               <div class="hero-bottom__left">
                 <h1 class="h1">Продажи<br />с&nbsp;помощью&nbsp;AI</h1>
                 <div class="hero-bottom__actions">
-                  <a class="pill pill--light" href="#cases">Узнать больше</a>
-                  <a class="icon-pill" href="#cases" aria-label="Открыть">
+                  <a class="pill pill--light" href="./cases.html">Узнать больше</a>
+                  <a class="icon-pill" href="./cases.html" aria-label="Открыть">
                     <span aria-hidden="true">›</span>
                   </a>
                 </div>
@@ -51,7 +51,7 @@
                   <div class="stat-card__meta">
                     Методики внутренней работы и коучинговые пакеты для снижения стресса.
                   </div>
-                  <a class="stat-card__link" href="#cases">Узнать больше</a>
+                  <a class="stat-card__link" href="./cases.html">Узнать больше</a>
                 </article>
 
                 <article class="stat-card stat-card--light">
@@ -85,8 +85,8 @@
           <div class="section__head section__head--row">
             <h2 class="h2">Что мы делаем</h2>
             <div class="section-actions">
-              <a class="pill pill--light" href="#cases">Узнать больше</a>
-              <a class="icon-pill icon-pill--light" href="#cases" aria-label="Открыть">
+              <a class="pill pill--light" href="./chto-my-delaem.html">Подробнее</a>
+              <a class="icon-pill icon-pill--light" href="./chto-my-delaem.html" aria-label="Открыть">
                 <span aria-hidden="true">›</span>
               </a>
             </div>
@@ -359,25 +359,134 @@
       </section>
     </main>
 
-    <div class="mobile-menu" hidden data-menu>
-      <div class="mobile-menu__sheet" role="dialog" aria-modal="true" aria-label="Меню">
-        <div class="mobile-menu__top">
-          <div class="brand">
-            <span></span>
+    <div class="mobile-menu" hidden data-menu aria-hidden="true">
+      <div class="mobile-menu__row">
+        <button
+          class="mobile-menu__backdrop"
+          type="button"
+          aria-label="Закрыть меню"
+        ></button>
+
+        <div
+          class="mobile-menu__sheet"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Меню"
+        >
+          <div class="mobile-menu__top">
+            <button class="icon-btn" type="button" aria-label="Закрыть меню" data-menu-close>
+              <span class="icon-btn__x" aria-hidden="true"></span>
+            </button>
           </div>
-          <button class="icon-btn" type="button" aria-label="Закрыть меню" data-menu-close>
-            <span class="icon-btn__x" aria-hidden="true"></span>
-          </button>
+
+          <div class="mobile-menu__scroll">
+            <div class="menu-toc__title">Содержание</div>
+            <nav class="menu-toc" aria-label="Содержание страницы">
+              <ul class="menu-toc__list">
+                <li>
+                  <a class="menu-toc__btn menu-toc__btn--lead" href="./articles/starie-metody-prodaj.html"
+                    >Старые методы продаж не работают</a>
+                </li>
+                <li>
+                  <a class="menu-toc__btn menu-toc__btn--lead" href="./articles/novyj-cjm.html">Новый CJM</a>
+                </li>
+                <li>
+                  <a
+                    class="menu-toc__btn menu-toc__btn--lead"
+                    href="./articles/modernizacija-staryh-instrumentov.html"
+                    >Модернизируем старые инструменты</a>
+                  <ul class="menu-toc__sub">
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/instrument-site.html">Сайт</a>
+                    </li>
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/instrument-bazy-dannyh.html"
+                        >Базы данных</a>
+                    </li>
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/instrument-soc-seti.html"
+                        >Соц сети</a>
+                    </li>
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/instrument-zvonki.html"
+                        >Звонки</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="menu-toc__btn menu-toc__btn--lead" href="./articles/ai-obzor.html">AI инструменты</a>
+                  <ul class="menu-toc__sub">
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/ai-agenty.html">агенты</a>
+                    </li>
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/ai-skauty-social.html"
+                        >скауты social</a>
+                    </li>
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/simulatory-mneniy-message.html"
+                        >симуляторы мнений + message</a>
+                    </li>
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/ponimanie-klienta-prognoz.html"
+                        >Понимание клиента и прогноз покупки</a>
+                    </li>
+                    <li>
+                      <a
+                        class="menu-toc__btn menu-toc__btn--sub"
+                        href="./articles/conversation-intelligence.html"
+                        >conversation intelligence</a>
+                    </li>
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/case-factory.html"
+                        >case factory</a>
+                    </li>
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/intent-routing.html"
+                        >Intent routing</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="menu-toc__btn menu-toc__btn--lead" href="./articles/sistema-metrik-instrumentov.html"
+                    >Система метрик для каждого инструмента</a>
+                </li>
+                <li>
+                  <a class="menu-toc__btn menu-toc__btn--lead" href="./articles/uslugi-obzor.html">Услуги</a>
+                  <ul class="menu-toc__sub">
+                    <li class="menu-toc__svc">
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/usluga-audit.html">Аудит</a>
+                    </li>
+                    <li class="menu-toc__svc">
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/usluga-strategiya.html"
+                        >Стратегия</a>
+                    </li>
+                    <li class="menu-toc__svc">
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/usluga-vnedrenie.html"
+                        >Внедрение</a>
+                    </li>
+                    <li>
+                      <a class="menu-toc__btn menu-toc__btn--sub" href="./articles/usluga-obratnoe-testirovanie.html"
+                        >Обратное тестирование</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="mobile-menu__foot">
+            <div class="mobile-menu__links mobile-menu__links--wide">
+              <a href="./chto-my-delaem.html">Что делаем</a>
+              <a href="./cases.html">Кейсы</a>
+              <a href="./o-kompanii.html">О компании</a>
+              <a href="#faq">Вопросы</a>
+              <a class="mobile-menu__links-span" href="#contact">Контакты</a>
+            </div>
+            <a class="pill pill--dark mobile-menu__cta" href="#contact">Обсудить проект</a>
+          </div>
         </div>
-        <div class="mobile-menu__links">
-          <a href="#what">Что мы делаем</a>
-          <a href="#cases">Кейсы</a>
-          <a href="#faq">Вопросы</a>
-          <a href="#contact">Контакты</a>
-        </div>
-        <a class="pill pill--dark" href="#contact">Обсудить проект</a>
       </div>
-      <button class="mobile-menu__backdrop" type="button" aria-label="Закрыть меню"></button>
     </div>
 
     <script src="./script.js"></script>

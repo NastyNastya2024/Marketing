@@ -24,12 +24,14 @@ function setupMobileMenu() {
 
   const open = () => {
     menu.hidden = false;
+    menu.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     closeBtn.focus();
   };
 
   const close = () => {
     menu.hidden = true;
+    menu.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
     openBtn.focus();
   };
