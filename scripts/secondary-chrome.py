@@ -249,6 +249,7 @@ _FIRST_P_RE = re.compile(r"<p>([\s\S]*?)</p>", re.IGNORECASE)
 _BROKEN_BACKREF_RE = re.compile(r"\\1\\n\s*|\\1\s*")
 _BODY_STYLE_RE = re.compile(r'(<body[^>]*\bstyle=")([^"]*)(")', re.IGNORECASE)
 _BODY_OPEN_RE = re.compile(r"<body[^>]*>", re.IGNORECASE)
+_ARTICLE_HERO_IMG_RE = re.compile(r"\s*<img[^>]*class=\"article-hero-img\"[^>]*>\s*", re.IGNORECASE)
 
 
 def insert_before_body_close(html: str, block: str) -> str:
@@ -485,7 +486,7 @@ FOOTER_ROOT = """\n      <section class="section section--light" id="contact">
               </div>
 
               <div class="footer-card__avatar" aria-label="Аватар">
-                <!-- avatar background set from --hero-bg-img on secondary pages -->
+                <img src="{{AVATAR_SRC}}" alt="" loading="lazy" />
               </div>
             </div>
           </div>
@@ -493,8 +494,7 @@ FOOTER_ROOT = """\n      <section class="section section--light" id="contact">
       </section>\n"""
 
 def render_footer(template: str, img_src: str) -> str:
-    # kept for backwards compatibility (template no longer uses placeholder)
-    return template
+    return template.replace("{{AVATAR_SRC}}", img_src)
 
 FOOTER_ARTICLE_TEMPLATE = FOOTER_ROOT
 
@@ -588,6 +588,7 @@ def process_article(path: Path) -> None:
     html = _SCRIPT_RE.sub("\n", html)
     html = _RELATED_RE.sub("\n", html)
     html = _CONTACT_SECTION_RE.sub("\n", html)
+    html = _ARTICLE_HERO_IMG_RE.sub("\n", html)
     # Fix accidental literal backref insertion from earlier run
     html = _BROKEN_BACKREF_RE.sub("", html)
 
@@ -610,15 +611,12 @@ def process_article(path: Path) -> None:
                     flags=re.IGNORECASE,
                 )
 
-    # Ensure article has a hero image after lead
-    img_tag = f'<img class="article-hero-img" src="../pic/{url_path(img)}" alt="{desired_h1(html)}" loading="lazy" />'
-    if "article-hero-img" not in html:
-        html = _ARTICLE_LEAD_RE.sub(lambda mm: mm.group(1) + "\n        " + img_tag, html, count=1)
+    # No inline image inside article body (per request)
     # Insert related cards before closing main
     if _MAIN_CLOSE_RE.search(html):
         html = _MAIN_CLOSE_RE.sub(related_section(_slug_from_path(path), True) + "    </main>", html, count=1)
     # Insert footer (contact) before menu
-    footer = render_footer(FOOTER_ARTICLE_TEMPLATE, f"../pic/{url_path(img)}")
+    footer = render_footer(FOOTER_ARTICLE_TEMPLATE, "../pic/Picture6.png")
     html = insert_before_body_close(html, footer)
     html = insert_before_body_close(html, "\n" + MENU_ARTICLE)
     path.write_text(html, encoding="utf-8")
@@ -648,7 +646,7 @@ def process_root_subpage(path: Path) -> None:
     html = _CONTACT_SECTION_RE.sub("\n", html)
     if _MAIN_CLOSE_RE.search(html):
         html = _MAIN_CLOSE_RE.sub(related_section(_slug_from_path(path), False) + "    </main>", html, count=1)
-    html = insert_before_body_close(html, render_footer(FOOTER_ROOT, f"./pic/{url_path(img)}"))
+    html = insert_before_body_close(html, render_footer(FOOTER_ROOT, "./pic/Picture6.png"))
     html = insert_before_body_close(html, "\n" + MENU_ROOT)
     # o-kompanii loads article.css
     html = html.replace("./articles/article.css?v=2026-05-11-1500", f"./articles/article.css?v={V}")

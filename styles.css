@@ -580,12 +580,12 @@ textarea {
   background: rgba(255, 255, 255, 0.82);
   border: 1px solid rgba(13, 15, 20, 0.08);
   box-shadow: var(--shadow-soft);
-  min-height: 220px;
+  min-height: 280px;
 }
 
 .a-card__img {
   width: 100%;
-  height: 116px;
+  height: 150px;
   object-fit: cover;
   border-radius: 18px;
   border: 1px solid rgba(13, 15, 20, 0.06);
@@ -1558,6 +1558,15 @@ textarea {
   background-position: center;
 }
 
+.page-secondary .footer-card__top {
+  background:
+    radial-gradient(900px 520px at 20% 0%, rgba(126, 102, 255, 0.55), transparent 60%),
+    radial-gradient(900px 520px at 70% 0%, rgba(105, 200, 255, 0.55), transparent 58%),
+    var(--hero-bg-img, url("./pic/Main.png"));
+  background-size: cover;
+  background-position: center;
+}
+
 .footer-card__bottom {
   background: #fff;
   padding: 28px 28px;
@@ -1643,16 +1652,6 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.page-secondary .footer-card__avatar {
-  background-image: var(--hero-bg-img, url("./pic/Main.png"));
-  background-size: cover;
-  background-position: center;
-}
-
-.page-secondary .footer-card__avatar img {
-  display: none;
 }
 
 /* Меню-штора: полная высота окна, панель слева */
