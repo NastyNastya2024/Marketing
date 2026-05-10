@@ -46,39 +46,95 @@ function setupMobileMenu() {
   });
 }
 
-function setupTestimonialSlider() {
-  const root = document.querySelector("[data-testimonial]");
-  const img = document.querySelector("[data-testimonial-img]");
-  const prev = document.querySelector("[data-testimonial-prev]");
-  const next = document.querySelector("[data-testimonial-next]");
+function setupCasesSlider() {
+  const root = document.querySelector("[data-case-slider]");
+  const img = document.querySelector("[data-case-img]");
+  const prev = document.querySelector("[data-case-prev]");
+  const next = document.querySelector("[data-case-next]");
+  const titleEl = document.querySelector("[data-case-title]");
+  const descEl = document.querySelector("[data-case-desc]");
+  const linkEl = document.querySelector("[data-case-link]");
 
-  if (!root || !(img instanceof HTMLImageElement) || !prev || !next) return;
+  if (
+    !root ||
+    !(img instanceof HTMLImageElement) ||
+    !prev ||
+    !next ||
+    !titleEl ||
+    !descEl ||
+    !(linkEl instanceof HTMLAnchorElement)
+  ) {
+    return;
+  }
 
-  const images = [
-    "./pic/Pic1.png",
-    "./pic/Pic2.png",
-    "./pic/Pic3.png",
-    "./pic/Pic4.png",
-    "./pic/Pic5.png",
-    "./pic/Pic6.png",
+  const slides = [
+    {
+      img: "./pic/Pic1.png",
+      imgAlt: "Иллюстрация кейса: B2B-логистика",
+      title: "Кейс 1. B2B-логистика: как перестали терять лидов из Telegram-чатов",
+      desc:
+        "Social Scout, Intent Routing и AI‑агент: лиды из Telegram, доля голоса в чатах и CAC — метрики и отладка на странице кейса.",
+      href: "./cases.html#case-1",
+    },
+    {
+      img: "./pic/Pic2.png",
+      imgAlt: "Иллюстрация кейса: SaaS CRM",
+      title: "Кейс 2. SaaS (CRM для МСП): сделки на этапе сравнения",
+      desc:
+        "Intent Routing, AI‑агент на типовых вопросах и Case Factory: рост регистрации, меньше рутины у менеджеров, открытия КП.",
+      href: "./cases.html#case-2",
+    },
+    {
+      img: "./pic/Pic3.png",
+      imgAlt: "Иллюстрация кейса: FinTech",
+      title: "Кейс 3. FinTech — платёжный агрегатор для e‑commerce",
+      desc:
+        "Онбординг и отток: Conversation Intelligence, типовые вопросы по API и документации — что поменяли за первые недели.",
+      href: "./cases.html#case-3",
+    },
+    {
+      img: "./pic/Pic4.png",
+      imgAlt: "Иллюстрация кейса: EdTech",
+      title: "Кейс 4. EdTech — корпоративная онлайн-школа",
+      desc:
+        "Маршрутизация запросов, автокурсы под роль и метрики вовлечённости — как сократили нагрузку на методистов.",
+      href: "./cases.html#case-4",
+    },
+    {
+      img: "./pic/Pic5.png",
+      imgAlt: "Иллюстрация кейса: retail",
+      title: "Кейс 5. Retail — сеть «товары для дома»",
+      desc:
+        "Intent Routing в чате, AI по каталогу и прогноз возврата: вопросы о размере и цвете без очереди, меньше возвратов.",
+      href: "./cases.html#case-5",
+    },
   ];
 
-  let idx = Math.max(0, images.indexOf(img.getAttribute("src") ?? ""));
-  const set = (n) => {
-    idx = (n + images.length) % images.length;
-    img.src = images[idx];
+  let idx = slides.findIndex((s) => s.img === (img.getAttribute("src") ?? ""));
+  if (idx < 0) idx = 0;
+
+  const apply = (n) => {
+    idx = (n + slides.length) % slides.length;
+    const s = slides[idx];
+    img.src = s.img;
+    img.alt = s.imgAlt;
+    titleEl.textContent = s.title;
+    descEl.textContent = s.desc;
+    linkEl.href = s.href;
   };
 
-  prev.addEventListener("click", () => set(idx - 1));
-  next.addEventListener("click", () => set(idx + 1));
+  prev.addEventListener("click", () => apply(idx - 1));
+  next.addEventListener("click", () => apply(idx + 1));
 
   window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") set(idx - 1);
-    if (e.key === "ArrowRight") set(idx + 1);
+    if (e.key === "ArrowLeft") apply(idx - 1);
+    if (e.key === "ArrowRight") apply(idx + 1);
   });
+
+  apply(idx);
 }
 
 setupFaq();
 setupMobileMenu();
-setupTestimonialSlider();
+setupCasesSlider();
 

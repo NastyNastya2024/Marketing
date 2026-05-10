@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=2026-05-11-1800" />
+    <link rel="stylesheet" href="./styles.css?v=2026-05-11-2100" />
   </head>
   <body>
     <header class="hero">
@@ -130,45 +130,51 @@
         </div>
       </section>
 
-      <section class="section section--light" id="testimonials">
+      <section class="section section--light" id="cases">
         <div class="container">
           <div class="section__head section__head--center">
-            <div class="eyebrow">ОТЗЫВЫ</div>
-            <h2 class="h2">Что говорят наши клиенты</h2>
+            <div class="eyebrow">КЕЙСЫ ВНЕДРЕНИЯ</div>
+            <h2 class="h2">Кейсы внедрения</h2>
           </div>
 
           <div class="testimonial">
             <div class="testimonial__side testimonial__side--left">
-              <div class="quote">
-                «Аккуратная вёрстка, понятная сетка и адаптив выглядят как самостоятельный
-                продукт, а не упрощённая копия десктопа.»
+              <div class="case-slide__text">
+                <p class="quote case-slide__desc" data-case-desc>
+                  Social Scout, Intent Routing и AI‑агент: лиды из Telegram, доля голоса в чатах и
+                  CAC — метрики и отладка на странице кейса.
+                </p>
+                <a class="case-slide__link" data-case-link href="./cases.html#case-1">
+                  Открыть кейс
+                  <span class="case-slide__arrow" aria-hidden="true">→</span>
+                </a>
               </div>
             </div>
 
-            <div class="testimonial__photo" data-testimonial>
+            <div class="testimonial__photo" data-case-slider>
               <img
                 class="testimonial__img"
                 src="./pic/Pic1.png"
-                alt="Фото клиента"
+                alt="Иллюстрация кейса: B2B-логистика"
                 loading="lazy"
-                data-testimonial-img
+                data-case-img
               />
             </div>
 
-            <div class="testimonial__nav" role="group" aria-label="Переключение фото">
+            <div class="testimonial__nav" role="group" aria-label="Переключение кейсов">
               <button
                 class="t-arrow t-arrow--left"
                 type="button"
-                aria-label="Предыдущее фото"
-                data-testimonial-prev
+                aria-label="Предыдущий кейс"
+                data-case-prev
               >
                 ‹
               </button>
               <button
                 class="t-arrow t-arrow--right"
                 type="button"
-                aria-label="Следующее фото"
-                data-testimonial-next
+                aria-label="Следующий кейс"
+                data-case-next
               >
                 ›
               </button>
@@ -176,8 +182,10 @@
 
             <div class="testimonial__side testimonial__side--right">
               <div class="person">
-                <div class="person__name">Алекс Морган</div>
-                <div class="person__role">Руководитель продукта</div>
+                <div class="person__name" data-case-title>
+                  Кейс 1. B2B-логистика: как перестали терять лидов из Telegram-чатов
+                </div>
+                <div class="person__role" data-case-kicker>Кейс внедрения</div>
               </div>
             </div>
           </div>

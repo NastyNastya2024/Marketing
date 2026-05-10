@@ -11,10 +11,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css?v=2026-05-11-1605" />
-    <link rel="stylesheet" href="./subpage.css?v=2026-05-11-1605" />
-    <link rel="stylesheet" href="./articles/article.css?v=2026-05-11-2043" />
+    <link rel="stylesheet" href="./articles/article.css?v=2026-05-11-2046" />
   </head>
-  <body class="subpage-body page-secondary" style="--hero-bg-img: url('./pic/header/maxim-berg-M8HFXJ1btZ0-unsplash.jpg');">
+  <body class="article-body page-secondary" style="--hero-bg-img: url('./pic/header/maxim-berg-M8HFXJ1btZ0-unsplash.jpg');">
     <header class="hero">
       <div class="hero-block">
         <div class="hero-block__top">
@@ -80,22 +79,18 @@
         </div>
       </div>
     </header>
-    <main class="subpage-main">
-      <div class="subpage-intro">
+    <main class="article-main">
+      <article class="article-sheet">
         <h1>Кейсы внедрения</h1>
-        <p>
+        <p class="article-lead">
           Пять разборов с индустрией, аудитом, приоритетами внедрения, метриками «до/после» и тем, что ломалось на
           пути — в том же духе, что <a href="./articles/usluga-audit.html">аудит</a>,
           <a href="./articles/usluga-strategiya.html">стратегия</a>,
           <a href="./articles/usluga-vnedrenie.html">внедрение</a> и
           <a href="./articles/usluga-obratnoe-testirovanie.html">отладка</a>.
         </p>
-      </div>
-
-      <div class="subpage-sheet">
-        <section class="section" style="padding-top: 0">
-          <div class="container">
-            <div class="mosaic-grid" aria-label="Кейсы внедрения">
+        <div class="article-prose">
+          <section class="mosaic-grid" aria-label="Кейсы внедрения">
               <article class="mosaic-card" id="case-1">
                 <h2>Кейс 1. B2B-логистика: как перестали терять лидов из Telegram-чатов</h2>
                 <p><strong>Индустрия:</strong> логистика и транспортная доставка (B2B). Средний региональный перевозчик, производства и интернет‑магазины.</p>
@@ -116,7 +111,7 @@
               </article>
 
               <article class="mosaic-card">
-                <h3>Кейс 1 — внедрение и эффект</h3>
+                <h2>Кейс 1 — внедрение и эффект</h2>
                 <p><strong>Priority 1 (2 недели):</strong></p>
                 <ul>
                   <li><strong>Social Scout</strong> — ключи: «доставка опоздала», «посоветуйте перевозчика», «ломают груз», «логистика бесит», «конкурент Х подвёл».</li>
@@ -162,7 +157,7 @@
               </article>
 
               <article class="mosaic-card">
-                <h3>Кейс 2 — внедрение и эффект</h3>
+                <h2>Кейс 2 — внедрение и эффект</h2>
                 <p><strong>Priority 1:</strong></p>
                 <ul>
                   <li><strong>Intent Routing</strong> — «сравнение» → менеджер по конкурентной работе; «техничка» → поддержка; «готов купить» → продажи.</li>
@@ -209,7 +204,7 @@
               </article>
 
               <article class="mosaic-card">
-                <h3>Кейс 3 — внедрение и эффект</h3>
+                <h2>Кейс 3 — внедрение и эффект</h2>
                 <p><strong>Priority 1:</strong></p>
                 <ul>
                   <li><strong>AI‑агент поддержки</strong> на 800 диалогах — API, документация, настройка; ~30 типов технических вопросов.</li>
@@ -254,7 +249,7 @@
               </article>
 
               <article class="mosaic-card">
-                <h3>Кейс 4 — внедрение и эффект</h3>
+                <h2>Кейс 4 — внедрение и эффект</h2>
                 <p><strong>Priority 1:</strong> Conversation Intelligence — после звонка карточка: упомянутые стейкхолдеры, возражения, срочность.</p>
                 <p><strong>Priority 2:</strong> AI‑агент сбора данных о компании из открытых источников (сайт, LinkedIn компании, новости) → CRM.</p>
                 <p><strong>Priority 3:</strong> симулятор мнений на 150 сделках (HR + исход: выигрыш/проигрыш) — какой аргумент для финдира vs ИТ.</p>
@@ -294,7 +289,7 @@
               </article>
 
               <article class="mosaic-card">
-                <h3>Кейс 5 — внедрение и эффект</h3>
+                <h2>Кейс 5 — внедрение и эффект</h2>
                 <p><strong>Priority 1:</strong> Intent Routing на сайте — вопросы размера/цвета/совместимости → AI‑агент, не очередь людей.</p>
                 <p><strong>Priority 2:</strong> AI‑агент по каталогу (~10 000 SKU) + отзывы; интеграция с мессенджерами — ссылка на товар → расширенные характеристики и фото из отзывов.</p>
                 <p><strong>Priority 3:</strong> прогноз возврата по признакам; при высоком риске (&gt; 60%) — предупреждение на сайте («цвет на экране может отличаться») и самовывоз.</p>
@@ -316,10 +311,9 @@
                   <li>Модель возвратов переоценила риск (слишком много предупреждений → отказ от покупки) — порог с 60% на 75%.</li>
                 </ul>
               </article>
-            </div>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
+      </article>
 
       <p style="margin: 24px 0 0; text-align: center">
         <a class="pill pill--light" href="./index.html#contact">Обсудить проект</a>
@@ -357,77 +351,76 @@
       </section>
     </main>
 
-      <section class="section section--light" id="contact">
-        <div class="container">
-          <div class="footer-card footer-card--embedded">
-            <div class="footer-card__top" aria-hidden="true"></div>
+    <section class="section section--light" id="contact">
+      <div class="container">
+        <div class="footer-card footer-card--embedded">
+          <div class="footer-card__top" aria-hidden="true"></div>
 
-            <div class="footer-card__bottom footer-card__bottom--contact">
-              <form class="footer-form" action="#" method="post">
-                <div class="form__grid">
-                  <label class="field">
-                    <span class="field__label">Имя</span>
-                    <input class="field__input" name="name" type="text" placeholder="Ваше имя" />
-                  </label>
-                  <label class="field">
-                    <span class="field__label">Email</span>
-                    <input
-                      class="field__input"
-                      name="email"
-                      type="email"
-                      placeholder="you@company.com"
-                    />
-                  </label>
-                  <label class="field">
-                    <span class="field__label">Бюджет</span>
-                    <input class="field__input" name="budget" type="text" placeholder="от $5k до $15k" />
-                  </label>
-                  <label class="field">
-                    <span class="field__label">Компания</span>
-                    <input class="field__input" name="company" type="text" placeholder="Название компании" />
-                  </label>
-                  <label class="field field--full">
-                    <span class="field__label">Сообщение</span>
-                    <textarea
-                      class="field__input field__textarea"
-                      name="message"
-                      rows="5"
-                      placeholder="Расскажите, что хотите сделать"
-                    ></textarea>
-                  </label>
-                </div>
-
-                <div class="form__actions">
-                  <button class="pill pill--dark" type="submit">Отправить сообщение</button>
-                  <span class="form__hint muted">Ответим в течение 1–2 рабочих дней.</span>
-                </div>
-              </form>
-
-              <div class="footer-card__content">
-                <div class="footer-card__left">
-                  <div class="footer-card__title">Спасибо<br />за просмотр!</div>
-                  <div class="footer-card__contacts">
-                    <a class="footer-contact" href="mailto:anastkomarova@yandex.ru">
-                      <span class="footer-contact__icon" aria-hidden="true">@</span>
-                      <span>anastkomarova@yandex.ru</span>
-                    </a>
-                    <a class="footer-contact" href="#">
-                      <span class="footer-contact__icon" aria-hidden="true">⌁</span>
-                      <span>@anastasia_komarova1</span>
-                    </a>
-                  </div>
-                </div>
+          <div class="footer-card__bottom footer-card__bottom--contact">
+            <form class="footer-form" action="#" method="post">
+              <div class="form__grid">
+                <label class="field">
+                  <span class="field__label">Имя</span>
+                  <input class="field__input" name="name" type="text" placeholder="Ваше имя" />
+                </label>
+                <label class="field">
+                  <span class="field__label">Email</span>
+                  <input
+                    class="field__input"
+                    name="email"
+                    type="email"
+                    placeholder="you@company.com"
+                  />
+                </label>
+                <label class="field">
+                  <span class="field__label">Бюджет</span>
+                  <input class="field__input" name="budget" type="text" placeholder="от $5k до $15k" />
+                </label>
+                <label class="field">
+                  <span class="field__label">Компания</span>
+                  <input class="field__input" name="company" type="text" placeholder="Название компании" />
+                </label>
+                <label class="field field--full">
+                  <span class="field__label">Сообщение</span>
+                  <textarea
+                    class="field__input field__textarea"
+                    name="message"
+                    rows="5"
+                    placeholder="Расскажите, что хотите сделать"
+                  ></textarea>
+                </label>
               </div>
 
-              <div class="footer-card__avatar" aria-label="Аватар">
-                <img src="./pic/Picture6.png" alt="" loading="lazy" />
+              <div class="form__actions">
+                <button class="pill pill--dark" type="submit">Отправить сообщение</button>
+                <span class="form__hint muted">Ответим в течение 1–2 рабочих дней.</span>
               </div>
+            </form>
+
+            <div class="footer-card__content">
+              <div class="footer-card__left">
+                <div class="footer-card__title">Спасибо<br />за просмотр!</div>
+                <div class="footer-card__contacts">
+                  <a class="footer-contact" href="mailto:anastkomarova@yandex.ru">
+                    <span class="footer-contact__icon" aria-hidden="true">@</span>
+                    <span>anastkomarova@yandex.ru</span>
+                  </a>
+                  <a class="footer-contact" href="#">
+                    <span class="footer-contact__icon" aria-hidden="true">⌁</span>
+                    <span>@anastasia_komarova1</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer-card__avatar" aria-label="Аватар">
+              <img src="./pic/Picture6.png" alt="" loading="lazy" />
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-  
     <div class="mobile-menu" hidden data-menu aria-hidden="true">
       <div class="mobile-menu__row">
         <button class="mobile-menu__backdrop" type="button" aria-label="Закрыть меню"></button>
