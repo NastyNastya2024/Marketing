@@ -1418,6 +1418,25 @@ textarea {
   font-size: 14px;
 }
 
+.faq__a p {
+  margin: 0;
+}
+
+.faq__a p + p,
+.faq__a p + ul,
+.faq__a ul + p {
+  margin-top: 10px;
+}
+
+.faq__a ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.faq__a li + li {
+  margin-top: 6px;
+}
+
 /* CTA band */
 .cta {
   padding: 54px 0;
