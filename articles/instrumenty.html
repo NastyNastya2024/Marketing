@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../styles.css?v=2026-05-11-1605" />
     <link rel="stylesheet" href="./article.css?v=2026-05-11-1605" />
   </head>
-  <body class="article-body">
+  <body class="article-body page-secondary" style="--hero-bg-img: url('../pic/header/debora-pilati-dOG0z4-gqp0-unsplash.jpg');">
     <header class="hero">
       <div class="hero-block">
         <div class="hero-block__top">
@@ -22,7 +22,7 @@
               <span></span>
 
               <div class="nav__right">
-                <a class="pill pill--ghost" href="../index.html#contact">Контакты</a>
+                <a class="pill pill--ghost" href="#contact">Контакты</a>
                 <button class="icon-btn" type="button" aria-label="Меню" data-menu-btn>
                   <span class="icon-btn__bars" aria-hidden="true"></span>
                 </button>
@@ -82,14 +82,116 @@
     <main class="article-main">
       <article class="article-sheet">
         <h1>Инструменты</h1>
-        <p class="article-lead">Обзор стека: от генерации текстов до маршрутизации и контроля качества звонков.</p>
+        <p class="article-lead">Эта страница — отдельный материал на тему «каталога инструментов». Здесь можно развернуть аргументацию, примеры и шаги внедрения.</p>
+        <img class="article-hero-img" src="../pic/BlockImage4.png" alt="Инструменты" loading="lazy" />
         <div class="article-prose">
-          <p>Эта страница — отдельный материал на тему «каталога инструментов». Здесь можно развернуть аргументацию, примеры и шаги внедрения.</p>
+          
           <p>Текст ниже вы можете заменить на финальную редакцию: кейсы, цифры, ссылки на демо и контакт для обсуждения.</p>
         </div>
       </article>
+
+      <section class="more-articles" aria-label="Ещё статьи">
+        <div class="more-articles__head">
+          <div>
+            <h2 class="more-articles__title">Последние статьи и новости</h2>
+            <div class="more-articles__hint">Следите за нашими достижениями и обновлениями</div>
+          </div>
+          <a class="more-articles__all" href="../articles.html">Все статьи →</a>
+        </div>
+        <div class="more-articles__grid">
+          <a class="a-card" href="./starie-metody-prodaj.html">
+            <img class="a-card__img" src="../pic/header/waro-photos-9WvAWiWwRTg-unsplash.jpg" alt="" loading="lazy" />
+            <h3 class="a-card__title">Старые методы продаж не работают</h3>
+            <p class="a-card__desc">Почему линейные воронки дают дорогой шум и как перейти к реальному пути клиента.</p>
+            <div class="a-card__cta">Узнать больше →</div>
+          </a>
+          <a class="a-card" href="./novyj-cjm.html">
+            <img class="a-card__img" src="../pic/header/martin-martz-0rZdaEtmKnU-unsplash.jpg" alt="" loading="lazy" />
+            <h3 class="a-card__title">Новый CJM</h3>
+            <p class="a-card__desc">Customer Journey как живой инструмент: касания, решения и точки внимания под AI.</p>
+            <div class="a-card__cta">Узнать больше →</div>
+          </a>
+          <a class="a-card" href="./modernizacija-staryh-instrumentov.html">
+            <img class="a-card__img" src="../pic/header/yue-ma-uY4eLs8gfuo-unsplash%20%281%29.jpg" alt="" loading="lazy" />
+            <h3 class="a-card__title">Модернизируем старые инструменты</h3>
+            <p class="a-card__desc">Сайт, данные, соцсети и звонки — усиливаем то, во что уже вложены деньги.</p>
+            <div class="a-card__cta">Узнать больше →</div>
+          </a>
+        </div>
+      </section>
     </main>
 
+      <section class="section section--light" id="contact">
+        <div class="container">
+          <div class="footer-card footer-card--embedded">
+            <div class="footer-card__top" aria-hidden="true"></div>
+
+            <div class="footer-card__bottom footer-card__bottom--contact">
+              <form class="footer-form" action="#" method="post">
+                <div class="form__grid">
+                  <label class="field">
+                    <span class="field__label">Имя</span>
+                    <input class="field__input" name="name" type="text" placeholder="Ваше имя" />
+                  </label>
+                  <label class="field">
+                    <span class="field__label">Email</span>
+                    <input
+                      class="field__input"
+                      name="email"
+                      type="email"
+                      placeholder="you@company.com"
+                    />
+                  </label>
+                  <label class="field">
+                    <span class="field__label">Бюджет</span>
+                    <input class="field__input" name="budget" type="text" placeholder="от $5k до $15k" />
+                  </label>
+                  <label class="field">
+                    <span class="field__label">Компания</span>
+                    <input class="field__input" name="company" type="text" placeholder="Название компании" />
+                  </label>
+                  <label class="field field--full">
+                    <span class="field__label">Сообщение</span>
+                    <textarea
+                      class="field__input field__textarea"
+                      name="message"
+                      rows="5"
+                      placeholder="Расскажите, что хотите сделать"
+                    ></textarea>
+                  </label>
+                </div>
+
+                <div class="form__actions">
+                  <button class="pill pill--dark" type="submit">Отправить сообщение</button>
+                  <span class="form__hint muted">Ответим в течение 1–2 рабочих дней.</span>
+                </div>
+              </form>
+
+              <div class="footer-card__content">
+                <div class="footer-card__left">
+                  <div class="footer-card__title">Спасибо<br />за просмотр!</div>
+                  <div class="footer-card__contacts">
+                    <a class="footer-contact" href="mailto:anastkomarova@yandex.ru">
+                      <span class="footer-contact__icon" aria-hidden="true">@</span>
+                      <span>anastkomarova@yandex.ru</span>
+                    </a>
+                    <a class="footer-contact" href="#">
+                      <span class="footer-contact__icon" aria-hidden="true">⌁</span>
+                      <span>@anastasia_komarova1</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="footer-card__avatar" aria-label="Аватар">
+                <!-- avatar background set from --hero-bg-img on secondary pages -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  
     <div class="mobile-menu" hidden data-menu aria-hidden="true">
       <div class="mobile-menu__row">
         <button class="mobile-menu__backdrop" type="button" aria-label="Закрыть меню"></button>
@@ -204,9 +306,9 @@
               <a href="../cases.html">Кейсы</a>
               <a href="../o-kompanii.html">О компании</a>
               <a href="../index.html#faq">Вопросы</a>
-              <a class="mobile-menu__links-span" href="../index.html#contact">Контакты</a>
+              <a class="mobile-menu__links-span" href="#contact">Контакты</a>
             </div>
-            <a class="pill pill--dark mobile-menu__cta" href="../index.html#contact">Обсудить проект</a>
+            <a class="pill pill--dark mobile-menu__cta" href="#contact">Обсудить проект</a>
           </div>
         </div>
       </div>
