@@ -82,10 +82,127 @@
     <main class="article-main">
       <article class="article-sheet">
         <h1>Базы данных</h1>
-        <p class="article-lead">Сегменты, метки событий и согласие на обработку — основа под ML и генеративные сценарии.</p>
-<div class="article-prose">
-          
-          <p>Связка с соцсенью и офлайн-событиями без потери качества записи.</p>
+        <p class="article-lead">
+          Сегменты, метки событий и согласие на обработку — основа под ML и генеративные сценарии.
+        </p>
+        <div class="article-prose">
+          <section class="mosaic-grid" aria-label="Статья по сегментам">
+            <article class="mosaic-card">
+              <h2>Роль базы данных: не хранение, а интерпретация поведения</h2>
+              <p>
+                Современная база данных в маркетинговой системе — это не таблица пользователей. Это модель поведения
+                аудитории во времени, где фиксируются действия, контекст, намерения, согласия, источники контакта и
+                изменения интересов.
+              </p>
+              <ul>
+                <li>действия и контекст</li>
+                <li>намерения</li>
+                <li>consent и источники контакта</li>
+                <li>изменения интересов</li>
+              </ul>
+              <p>Это слой, который соединяет: пользователь → событие → смысл → реакция системы.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Сегменты: динамическая, а не статическая структура</h2>
+              <p>
+                Сегмент — это живой вычисляемый слой, который строится из поведения, частоты взаимодействий, глубины
+                вовлечения, реакции на контент и каналов входа.
+              </p>
+              <p>Примеры динамических сегментов:</p>
+              <ul>
+                <li>«читали 3+ материала про автоматизацию за 7 дней»</li>
+                <li>«пришли из Telegram, но не перешли в продукт»</li>
+                <li>«смотрят видео, но не читают текст»</li>
+              </ul>
+              <p>Реализация: event-based segmentation, SQL/NoSQL, CDP. Инструменты: BigQuery, Snowflake, Segment, PostHog.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Метки событий: атомарный слой поведения</h2>
+              <p>Современные системы строятся вокруг потока событий (event stream), а не «профиля пользователя».</p>
+              <p>Примеры событий:</p>
+              <ul>
+                <li>page_view, scroll_depth, video_watch_50%</li>
+                <li>click_cta, open_email, join_channel</li>
+                <li>offline_scan_qr</li>
+                <li>purchase / lead / signup</li>
+              </ul>
+              <p>Ключевое — метаданные события:</p>
+              <ul>
+                <li>source, context, intent</li>
+                <li>device / environment</li>
+                <li>campaign / content_id</li>
+                <li>session_state</li>
+              </ul>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Consent layer: согласие как часть архитектуры данных</h2>
+              <p>
+                В новых архитектурах согласие — обязательный атрибут каждого события, а не отдельная «галочка» в другой
+                таблице.
+              </p>
+              <ul>
+                <li>тип согласия (email, tracking, personalization)</li>
+                <li>время, версия политики, источник (web/app/offline)</li>
+                <li>ограничения обработки</li>
+              </ul>
+              <p>
+                Это критично для ML и генеративных сценариев: нельзя обучаться на запрещённых данных и нужно учитывать
+                уровень персонализации.
+              </p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Онлайн + офлайн: единый контур данных</h2>
+              <p>
+                Пользователь перемещается между сайтами, соцсетями, мессенджерами, офлайн-ивентами, звонками, QR-точками
+                и маркетплейсами. Без связки теряется 60–90% контекста.
+              </p>
+              <ol>
+                <li><strong>Identity resolution</strong>: email/phone, device fingerprint, login systems, CRM ID</li>
+                <li><strong>Offline ingestion</strong>: QR, POS, CRM-ввод, event check-in</li>
+                <li><strong>Streaming pipeline</strong>: Kafka, Flink</li>
+              </ol>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Единая модель данных для ML и GenAI</h2>
+              <p>Правильно построенная база становится источником для трёх классов сценариев:</p>
+              <ol>
+                <li><strong>Recommendation</strong>: следующий контент/продукт/шаг</li>
+                <li><strong>Generative personalization</strong>: тексты под сегмент, динамические лендинги, офферы</li>
+                <li><strong>Predictive modeling</strong>: вероятность покупки, churn, intent scoring</li>
+              </ol>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Как выглядит правильная архитектура</h2>
+              <p>
+                Сбор (сайт / соцсети / офлайн / CRM) → Event layer (stream) → Data warehouse → Feature store → ML/GenAI
+                layer → Activation layer (маркетинг, контент, коммуникации).
+              </p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Главный сдвиг и итог</h2>
+              <p>Раньше база данных была архивом. Теперь — системой интерпретации поведения в реальном времени.</p>
+              <p>Без неё:</p>
+              <ul>
+                <li>контент-завод работает вслепую</li>
+                <li>ML не понимает контекст</li>
+                <li>персонализация становится фикцией</li>
+                <li>офлайн и онлайн остаются разными мирами</li>
+              </ul>
+              <p>С ней:</p>
+              <ul>
+                <li>каждый контакт становится обучающим сигналом</li>
+                <li>контент адаптируется автоматически</li>
+                <li>система предсказывает поведение, а не только реагирует</li>
+              </ul>
+            </article>
+          </section>
         </div>
       </article>
 

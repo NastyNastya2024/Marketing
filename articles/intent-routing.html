@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Intent routing — Маркетинг</title>
+    <title>Intent Routing — Маркетинг</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles.css?v=2026-05-11-1605" />
-    <link rel="stylesheet" href="./article.css?v=2026-05-11-1605" />
+    <link rel="stylesheet" href="./article.css?v=2026-05-11-1711" />
   </head>
   <body class="article-body page-secondary" style="--hero-bg-img: url('../pic/header/yue-ma-uY4eLs8gfuo-unsplash%20%282%29.jpg');">
     <header class="hero">
@@ -37,7 +37,7 @@
           <div class="hero-block__inner hero-block__inner--full">
             <div class="hero-bottom">
               <div class="hero-bottom__left">
-                <h1 class="h1">Intent routing</h1>
+                <h1 class="h1">Intent Routing</h1>
                 <div class="hero-bottom__actions">
                   <a class="pill pill--light" href="../cases.html">Узнать больше</a>
                   <a class="icon-pill" href="../cases.html" aria-label="Открыть">
@@ -81,11 +81,230 @@
     </header>
     <main class="article-main">
       <article class="article-sheet">
-        <h1>Intent routing</h1>
-        <p class="article-lead">Эта страница — отдельный материал на тему «Intent routing». Здесь можно развернуть аргументацию, примеры и шаги внедрения.</p>
-<div class="article-prose">
-          
-          <p>Текст ниже вы можете заменить на финальную редакцию: кейсы, цифры, ссылки на демо и контакт для обсуждения.</p>
+        <h1>Intent Routing: как перестать мучить клиента переключениями между операторами и повысить конверсию в 2 раза</h1>
+        <p class="article-lead">
+          Клиента бесит IVR и бесконечные переводы. Intent Routing смотрит на <strong>смысл</strong> первого сообщения или звонка и сразу ведёт к нужному специалисту, боту или очереди — без «расскажите заново».
+        </p>
+        <div class="article-prose">
+          <section class="mosaic-grid" aria-label="Статья по сегментам">
+            <article class="mosaic-card">
+              <h2>Введение: главная боль — клиента не слышат</h2>
+              <p>
+                Сгорел ноутбук за два часа до дедлайна — звоните в поддержку: «нажмите 1… 2… 3», потом перевод, снова «по какому вопросу?», снова перевод. Клиент на нервах и уходит к тому, кто ответил сразу с нужной компетенцией.
+              </p>
+              <p>
+                Суть <strong>Intent Routing</strong>: не важен канал (сайт, Telegram, звонок, соцсеть) — важно, <strong>что человек хочет сейчас</strong>. Направили не туда — потеряли навсегда.
+              </p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>1. Intent Routing — что это на самом деле</h2>
+              <p>
+                <strong>ИИ‑система</strong>, которая по первому сообщению или голосу определяет намерение (intent) и мгновенно направляет обращение к нужному сотруднику, очереди или боту — без человека‑диспетчера.
+              </p>
+              <p><strong>Ключевая идея:</strong> классика смотрит на канал и кнопки IVR; Intent Routing смотрит на <strong>смысл</strong>.</p>
+              <table aria-label="Традиционная маршрутизация и Intent Routing">
+                <thead>
+                  <tr>
+                    <th scope="col">Традиционная маршрутизация</th>
+                    <th scope="col">Intent Routing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>«Он пришёл из Telegram»</td>
+                    <td>«Он хочет купить»</td>
+                  </tr>
+                  <tr>
+                    <td>«Нажал 2 в меню»</td>
+                    <td>«У него сломано устройство»</td>
+                  </tr>
+                  <tr>
+                    <td>«Лид из формы „Связаться“»</td>
+                    <td>«Сравнивает нас с конкурентом»</td>
+                  </tr>
+                  <tr>
+                    <td>«Первый свободный оператор»</td>
+                    <td>«Лучший по быстрому внедрению»</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p><strong>Результат:</strong> историю не повторяют трижды, меньше ожидания и злости — выше конверсия.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>2. Архитектура: пять слоёв за пару секунд</h2>
+
+              <h3>Слой 1. Сбор входа (канал не важен)</h3>
+              <p>Для системы есть только текст или ASR из голоса:</p>
+              <ul>
+                <li>чат на сайте (Jivo, LiveTex, Chat2Desk и др.)</li>
+                <li>Telegram, WhatsApp Business API</li>
+                <li>ВК, ОК, Facebook Messenger</li>
+                <li>звонок → транскрипт</li>
+                <li>email (тема + начало письма)</li>
+                <li>комментарии в соцсетях (опционально)</li>
+              </ul>
+
+              <h3>Слой 2. Распознавание намерения (Intent Recognition)</h3>
+              <p><strong>Вопрос 1.</strong> Что клиент хочет сделать?</p>
+              <table aria-label="Типы намерений и примеры">
+                <thead>
+                  <tr>
+                    <th scope="col">Тип</th>
+                    <th scope="col">Пример</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>purchase_intent</td>
+                    <td>«Хочу купить CRM сегодня, как оплатить?»</td>
+                  </tr>
+                  <tr>
+                    <td>tech_support</td>
+                    <td>«Софт не открывается, ошибка 404»</td>
+                  </tr>
+                  <tr>
+                    <td>comparison</td>
+                    <td>«Чем вы лучше [Конкурент X]?»</td>
+                  </tr>
+                  <tr>
+                    <td>price_inquiry</td>
+                    <td>«Сколько стоит?» (без контекста)</td>
+                  </tr>
+                  <tr>
+                    <td>trial_demo</td>
+                    <td>«Дайте тест на неделю»</td>
+                  </tr>
+                  <tr>
+                    <td>partner_offer</td>
+                    <td>«Хотим быть интегратором»</td>
+                  </tr>
+                  <tr>
+                    <td>cancellation</td>
+                    <td>«Как расторгнуть договор?»</td>
+                  </tr>
+                  <tr>
+                    <td>feedback_complaint</td>
+                    <td>«Менеджер нахамил»</td>
+                  </tr>
+                  <tr>
+                    <td>just_browsing</td>
+                    <td>«Просто изучаю рынок»</td>
+                  </tr>
+                  <tr>
+                    <td>schedule_call</td>
+                    <td>«Переведите через час»</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p><strong>Вопрос 2. Срочность:</strong> critical / normal / low.</p>
+              <p><strong>Вопрос 3. Сущности:</strong> срок, бюджет, регион, сценарий («для склада», «в Казани»).</p>
+              <p><strong>Вопрос 4. Тональность:</strong> негатив + tech_support → выше приоритет, иногда старший инженер.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Слой 3. Классификация и приоритет</h2>
+              <p>На выходе — структурированный объект, например:</p>
+              <pre aria-label="Пример JSON после распознавания">{
+  "intent": "purchase_intent",
+  "sub_intent": "fast_implementation",
+  "urgency": "critical",
+  "entities": {
+    "timeline": "14 дней",
+    "budget_hint": null,
+    "use_case": "склад"
+  },
+  "sentiment": "neutral",
+  "raw_text": "Сколько стоит внедрение за 2 недели?"
+}</pre>
+              <p><strong>Score 0–100:</strong> 80–100 — немедленно и лучший исполнитель; 50–79 — в течение часа; 0–49 — в течение дня или бот.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Слой 4. Правила маршрутизации</h2>
+              <table aria-label="Пример правил для B2B CRM">
+                <thead>
+                  <tr>
+                    <th scope="col">Intent</th>
+                    <th scope="col">Приоритет</th>
+                    <th scope="col">Куда</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>purchase_intent + critical</td>
+                    <td>95</td>
+                    <td>менеджер быстрых сделок (&lt;30 мин)</td>
+                  </tr>
+                  <tr>
+                    <td>comparison</td>
+                    <td>80</td>
+                    <td>менеджер конкурентной разведки</td>
+                  </tr>
+                  <tr>
+                    <td>tech_support + негатив</td>
+                    <td>90</td>
+                    <td>старший инженер (право на компенсацию)</td>
+                  </tr>
+                  <tr>
+                    <td>price_inquiry, без срочности</td>
+                    <td>40</td>
+                    <td>бот + авто‑прайс</td>
+                  </tr>
+                  <tr>
+                    <td>trial_demo</td>
+                    <td>70</td>
+                    <td>онбординг</td>
+                  </tr>
+                  <tr>
+                    <td>just_browsing</td>
+                    <td>10</td>
+                    <td>только бот, не беспокоить людей</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p><strong>Доп. фильтры:</strong> VIP → всегда топ‑менеджер; повтор тикета за 24 ч → тот же оператор; другой язык → своя очередь.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Слой 5. Доставка и уведомление</h2>
+              <p>Сотрудник получает один экран: текст клиента, интент, ссылка на CRM, история, рекомендованный ответ — без «а вы по какому вопросу?».</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>3. Примеры (от простого к сложному)</h2>
+              <h3>1) Сайт: срочная покупка</h3>
+              <p>«CRM на 10 человек, до пятницы, бюджет есть» → purchase_intent, critical, score ~97 → лучший по быстрым внедрениям, скрипт «быстрое внедрение».</p>
+              <h3>2) Telegram: негатив по продукту</h3>
+              <p>«Опять не работает, третий раз» → tech_support + негатив, тикет «критическая ошибка», старший инженер, компенсация.</p>
+              <h3>3) Звонок: сравнение с конкурентом</h3>
+              <p>Транскрипт → comparison, сущность «конкурент Х» → эксперт с цифрами по сценарию, не «они плохие».</p>
+              <h3>4) «Просто смотрю»</h3>
+              <p>just_browsing, низкий score → бот даёт ссылку на цены, без назойливого звонка.</p>
+              <h3>5) «Сколько стоит?»</h3>
+              <p>Неоднозначно → бот задаёт уточнение (покупка / сравнение / задача) и только потом маршрутизация.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>4. Голос: IVR 2.0</h2>
+              <p>«Расскажите коротко, по какому вопросу» → ASR → intent (например warranty_claim + негатив) → сразу в отдел гарантии, без кнопок.</p>
+              <p><strong>Эффект:</strong> путь к специалисту с 2–3 минут до ~20 секунд; брошенных вызовов меньше на 40–50%.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>5. CRM и скоринг</h2>
+              <p>Intent Routing живёт внутри CRM: карточка обогащается интентом, срочностью, сущностями и уверенностью модели.</p>
+              <pre aria-label="Пример записи в CRM">ООО «Ромашка», менеджер: Иванов А.
+
+Новое обращение (Telegram, 02.03 15:23):
+Текст: «Сколько стоит внедрение за 2 недели?»
+
+Intent: purchase_intent (98% уверенность)
+Срочность: critical
+Сущности: срок = 14 дней, use_case = внедрение</pre>
+            </article>
+          </section>
         </div>
       </article>
 

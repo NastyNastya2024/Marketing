@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles.css?v=2026-05-11-1605" />
-    <link rel="stylesheet" href="./article.css?v=2026-05-11-1605" />
+    <link rel="stylesheet" href="./article.css?v=2026-05-11-1712" />
   </head>
   <body class="article-body page-secondary" style="--hero-bg-img: url('../pic/header/martin-martz-0rZdaEtmKnU-unsplash.jpg');">
     <header class="hero">
@@ -82,10 +82,356 @@
     <main class="article-main">
       <article class="article-sheet">
         <h1>Система метрик для каждого инструмента</h1>
-        <p class="article-lead">Отдельно считаются воронки контента, реакции моделей и экономика обработки лида.</p>
-<div class="article-prose">
-          
-          <p>Система позволяет отключить слабые связки и усилить те, где реальный вклад в выручку.</p>
+        <p class="article-lead">
+          Единая система метрик для AI‑инструментов: от прогноза покупки и соблюдения скрипта до Case Factory, Intent Routing
+          и итоговой экономики (CAC). Ниже — целевые пороги, формулы и то, как собирать данные.
+        </p>
+        <div class="article-prose">
+          <section class="mosaic-grid" aria-label="Статья по сегментам">
+            <article class="mosaic-card">
+              <h2>Часть 4. Прогноз покупки</h2>
+              <p><strong>Что измеряем:</strong> точность прогноза «купит / не купит».</p>
+              <p>
+                <strong>Binary Purchase Prediction Accuracy</strong> — доля случаев, когда прогноз модели совпал с фактом
+                покупки в заданном окне (например, 30 дней).
+              </p>
+              <pre aria-label="Формула точности прогноза">Accuracy = (True_Positive + True_Negative) / Total_Predictions × 100%</pre>
+              <ul>
+                <li><strong>TP</strong> — сказали «купит», клиент купил</li>
+                <li><strong>TN</strong> — сказали «не купит», не купил</li>
+                <li><strong>FP</strong> — сказали «купит», не купил</li>
+                <li><strong>FN</strong> — сказали «не купит», купил (самая опасная ошибка)</li>
+              </ul>
+              <table aria-label="Целевая точность по сегментам">
+                <thead>
+                  <tr>
+                    <th scope="col">Сегмент</th>
+                    <th scope="col">Целевая точность</th>
+                    <th scope="col">Примечание</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Горячие (Score &gt; 80)</td>
+                    <td>&gt; 90%</td>
+                    <td>ошибки дороги; ложный «горячий» съедает время</td>
+                  </tr>
+                  <tr>
+                    <td>Тёплые (50–80)</td>
+                    <td>&gt; 75%</td>
+                    <td>допустимы ошибки</td>
+                  </tr>
+                  <tr>
+                    <td>Холодные (&lt; 50)</td>
+                    <td>&gt; 85% (в сторону негатива)</td>
+                    <td>важно не пропустить внезапный интерес</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table aria-label="Дополнительные метрики прогноза">
+                <thead>
+                  <tr>
+                    <th scope="col">Метрика</th>
+                    <th scope="col">Формула</th>
+                    <th scope="col">Цель</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Precision («купит»)</td>
+                    <td>TP / (TP + FP)</td>
+                    <td>&gt; 80%</td>
+                  </tr>
+                  <tr>
+                    <td>Recall («купит»)</td>
+                    <td>TP / (TP + FN)</td>
+                    <td>&gt; 85%</td>
+                  </tr>
+                  <tr>
+                    <td>F1-score</td>
+                    <td>2 × (P × R) / (P + R)</td>
+                    <td>&gt; 0,82</td>
+                  </tr>
+                  <tr>
+                    <td>AUC-ROC</td>
+                    <td>площадь под кривой</td>
+                    <td>&gt; 0,85</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p><strong>Как собирать:</strong> ежедневный прогон по активным лидам; в CRM фиксируется факт сделки; раз в неделю — расчёт на отложенной выборке (прошлый месяц с известным исходом).</p>
+              <table aria-label="Интерпретация точности">
+                <thead>
+                  <tr>
+                    <th scope="col">Точность</th>
+                    <th scope="col">Интерпретация</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>&lt; 70%</td>
+                    <td>не лучше монетки — не использовать</td>
+                  </tr>
+                  <tr>
+                    <td>70–85%</td>
+                    <td>подсказка, без полного доверия</td>
+                  </tr>
+                  <tr>
+                    <td>85–90%</td>
+                    <td>хорошо для типовых сегментов</td>
+                  </tr>
+                  <tr>
+                    <td>&gt; 90%</td>
+                    <td>отлично; можно автоматизировать приоритеты</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p><strong>Типичная ошибка:</strong> мерить точность на обучающей выборке (overfitting). Нужна выборка «следующего периода», которую модель не видела.</p>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 5. Conversation Intelligence</h2>
+              <p><strong>Что измеряем:</strong> долю выполнения чек-листа менеджером.</p>
+              <p>
+                <strong>Script Compliance Score</strong> — процент обязательных шагов скрипта, которые менеджер выполнил по
+                оценке ИИ на транскрипте.
+              </p>
+              <pre aria-label="Формула Compliance">Compliance = (выполненные_обязательные_шаги / все_обязательные_шаги) × 100%</pre>
+              <table aria-label="Пример чек-листа звонка CRM">
+                <thead>
+                  <tr>
+                    <th scope="col">Шаг</th>
+                    <th scope="col">Обязательный</th>
+                    <th scope="col">Вес</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Представился</td><td>Да</td><td>5%</td></tr>
+                  <tr><td>Спросил о текущей ситуации</td><td>Да</td><td>15%</td></tr>
+                  <tr><td>Выявил бюджет</td><td>Да</td><td>20%</td></tr>
+                  <tr><td>Назвал цену в первые 5 минут</td><td>Да</td><td>10%</td></tr>
+                  <tr><td>Спросил о сроках</td><td>Да</td><td>15%</td></tr>
+                  <tr><td>Обработал «дорого»</td><td>Да, если было</td><td>20%</td></tr>
+                  <tr><td>Завершил действием (встреча, КП)</td><td>Да</td><td>15%</td></tr>
+                </tbody>
+              </table>
+              <table aria-label="Целевой Compliance по сценариям">
+                <thead>
+                  <tr>
+                    <th scope="col">Сценарий</th>
+                    <th scope="col">Цель</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Первый звонок новому лиду</td><td>&gt; 85%</td></tr>
+                  <tr><td>Звонок с возражениями</td><td>&gt; 80%</td></tr>
+                  <tr><td>Закрытие сделки</td><td>&gt; 90%</td></tr>
+                  <tr><td>Прогрев</td><td>&gt; 70%</td></tr>
+                </tbody>
+              </table>
+              <p><strong>Как собирать:</strong> запись → ASR → разметка по чек-листу → еженедельная сводка по менеджеру.</p>
+              <table aria-label="Интерпретация Compliance">
+                <thead>
+                  <tr>
+                    <th scope="col">Значение</th>
+                    <th scope="col">Интерпретация</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>&lt; 60%</td><td>не следует скрипту — обучение / смена подхода</td></tr>
+                  <tr><td>60–75%</td><td>средне, тренировки</td></tr>
+                  <tr><td>75–85%</td><td>хорошо, стабильно</td></tr>
+                  <tr><td>&gt; 85%</td><td>отлично — можно тиражировать опыт</td></tr>
+                </tbody>
+              </table>
+              <table aria-label="Доп. метрики Conversation Intelligence">
+                <thead>
+                  <tr>
+                    <th scope="col">Метрика</th>
+                    <th scope="col">Смысл</th>
+                    <th scope="col">Цель</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Talk-to-Listen Ratio</td>
+                    <td>речь менеджера / речь клиента</td>
+                    <td>&lt; 0,5</td>
+                  </tr>
+                  <tr>
+                    <td>Время до первой цены</td>
+                    <td>минуты от старта</td>
+                    <td>&lt; 3 мин</td>
+                  </tr>
+                  <tr>
+                    <td>Обработка возражений</td>
+                    <td>% успешно закрытых</td>
+                    <td>&gt; 60%</td>
+                  </tr>
+                  <tr>
+                    <td>NPS звонка</td>
+                    <td>оценка после звонка</td>
+                    <td>&gt; 70% положительных</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 6. Case Factory</h2>
+              <p><strong>Что измеряем:</strong> число автоматически сгенерированных кейсов в месяц.</p>
+              <p>
+                <strong>Auto-generated Case Volume</strong> — кейсы «было / стало / цифры / цитата», созданные без участия
+                человека.
+              </p>
+              <pre aria-label="Формула объёма кейсов">Cases_per_month = Σ кейсов Case Factory за календарный месяц</pre>
+              <p><strong>Минимум для засчёта кейса:</strong></p>
+              <ul>
+                <li>≥ 200 слов</li>
+                <li>раздел «Было» и «Стало» с цифрами</li>
+                <li>цитата клиента (переписка / звонок)</li>
+                <li>отрасль и размер компании</li>
+              </ul>
+              <table aria-label="Уровни качества кейсов">
+                <thead>
+                  <tr>
+                    <th scope="col">Уровень</th>
+                    <th scope="col">Описание</th>
+                    <th scope="col">Цель / мес.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Черновик</td><td>нужна правка человека</td><td>20–30</td></tr>
+                  <tr><td>Готов к публикации</td><td>прошёл авто‑проверку</td><td>10–30</td></tr>
+                  <tr><td>Опубликован</td><td>сайт / соцсети</td><td>5–15</td></tr>
+                </tbody>
+              </table>
+              <p><strong>Как собирать:</strong> при закрытии сделки «успех» — генерация; авто‑проверка и статус в CRM.</p>
+              <table aria-label="Интерпретация объёма кейсов">
+                <thead>
+                  <tr>
+                    <th scope="col">Кейсов / мес.</th>
+                    <th scope="col">Интерпретация</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>&lt; 5</td><td>мало сделок или слабая настройка</td></tr>
+                  <tr><td>5–10</td><td>минимум для малого бизнеса</td></tr>
+                  <tr><td>10–30</td><td>хорошо, отдел использует кейсы</td></tr>
+                  <tr><td>&gt; 30</td><td>отлично — проверить, нет ли просадки качества</td></tr>
+                </tbody>
+              </table>
+              <table aria-label="Доп. метрики Case Factory">
+                <thead>
+                  <tr>
+                    <th scope="col">Метрика</th>
+                    <th scope="col">Формула / смысл</th>
+                    <th scope="col">Цель</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Использование менеджерами</td>
+                    <td>отправленные / сгенерированные × 100%</td>
+                    <td>&gt; 50%</td>
+                  </tr>
+                  <tr>
+                    <td>Влияние на конверсию</td>
+                    <td>конверсия в сделку с кейсом vs без</td>
+                    <td>рост &gt; 20% (минимально); целевой уровень — &gt; 50% относительного прироста (конверсия минимум в 1,5 раза)</td>
+                  </tr>
+                  <tr>
+                    <td>Время генерации</td>
+                    <td>от закрытия сделки до готового кейса</td>
+                    <td>&lt; 24 ч</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 7. Intent Routing</h2>
+              <p><strong>Что измеряем:</strong> время маршрутизации.</p>
+              <p>
+                <strong>Routing Latency</strong> — от получения сообщения клиента до назначения сотруднику или очереди.
+              </p>
+              <pre aria-label="Формула Routing Latency">Routing_Latency = время_назначения − время_получения</pre>
+              <p>Единицы: миллисекунды или секунды.</p>
+              <table aria-label="Нормы latency по каналам">
+                <thead>
+                  <tr>
+                    <th scope="col">Канал</th>
+                    <th scope="col">Норма</th>
+                    <th scope="col">Примечание</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Чат на сайте</td><td>&lt; 1 с</td><td>клиент не замечает задержку</td></tr>
+                  <tr><td>Telegram / WhatsApp</td><td>&lt; 1 с</td><td>быстрая маршрутизация</td></tr>
+                  <tr><td>Входящий звонок (IVR)</td><td>&lt; 2 с</td><td>с учётом ASR</td></tr>
+                  <tr><td>Email</td><td>&lt; 5 с</td><td>допустимо чуть дольше</td></tr>
+                </tbody>
+              </table>
+              <p><strong>Как собирать:</strong> логи: timestamp входа и timestamp назначения; для голоса — начало речи и перевод на оператора.</p>
+              <table aria-label="Интерпретация Routing Latency">
+                <thead>
+                  <tr>
+                    <th scope="col">Время</th>
+                    <th scope="col">Интерпретация</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>&lt; 500 мс</td><td>отлично для чата</td></tr>
+                  <tr><td>500 мс – 2 с</td><td>хорошо</td></tr>
+                  <tr><td>2–5 с</td><td>терпимо, задержка заметна</td></tr>
+                  <tr><td>&gt; 5 с</td><td>плохо, теряются горячие лиды</td></tr>
+                </tbody>
+              </table>
+              <table aria-label="Доп. метрики Intent Routing">
+                <thead>
+                  <tr>
+                    <th scope="col">Метрика</th>
+                    <th scope="col">Формула</th>
+                    <th scope="col">Цель</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Точность интента</td>
+                    <td>верно / всего × 100%</td>
+                    <td>&gt; 90%</td>
+                  </tr>
+                  <tr>
+                    <td>Успешная маршрутизация</td>
+                    <td>к нужному спец. / всего × 100%</td>
+                    <td>&gt; 95%</td>
+                  </tr>
+                  <tr>
+                    <td>Сокращение переключений</td>
+                    <td>(до − после) / до × 100%</td>
+                    <td>&gt; 60%</td>
+                  </tr>
+                  <tr>
+                    <td>FCR</td>
+                    <td>с первого контакта / всего × 100%</td>
+                    <td>&gt; 70%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+
+            <article class="mosaic-card">
+              <h2>Часть 8. CAC (Customer Acquisition Cost)</h2>
+              <p><strong>Что измеряем:</strong> стоимость привлечения одного платящего клиента.</p>
+              <p>
+                <strong>CAC</strong> — все затраты на маркетинг, продажи и ИИ‑инструменты, делённые на число новых клиентов за период.
+              </p>
+              <pre aria-label="Формула CAC">CAC = (маркетинг + продажи + ИИ-инструменты) / новые_клиенты_за_период</pre>
+              <p><strong>Маркетинг:</strong> реклама, контент, SEO, SMM.</p>
+              <p><strong>Продажи:</strong> зарплаты (оклад + бонусы за новых), CRM, телефония.</p>
+              <p><strong>ИИ:</strong> подписки, лицензии, внедрение, поддержка.</p>
+            </article>
+          </section>
         </div>
       </article>
 
